@@ -1,0 +1,494 @@
+{
+ "site": {
+  "p5": 0.5800000000000001,
+  "r10": 0.6616317016317017,
+  "mrr": 0.7404761904761905
+ },
+ "web": {
+  "p5": 0.49000000000000005,
+  "r10": 0.696091686091686,
+  "mrr": 0.7495833333333333
+ },
+ "rows": [
+  {
+   "id": "q01",
+   "kind": "exact",
+   "query": "treated pine 90x45 2.4m",
+   "relevant": 2,
+   "site": {
+    "p5": 0.4,
+    "r10": 1,
+    "mrr": 1,
+    "results": 10,
+    "withPrice": 10,
+    "latencyMs": 1019
+   },
+   "web": {
+    "p5": 0.4,
+    "r10": 1,
+    "mrr": 1,
+    "results": 10,
+    "product": 4,
+    "wrongSite": 1,
+    "nonProduct": 5,
+    "offsite": 0
+   }
+  },
+  {
+   "id": "q02",
+   "kind": "exact",
+   "query": "Dulux Weathershield 4L",
+   "relevant": 11,
+   "site": {
+    "p5": 1,
+    "r10": 0.9090909090909091,
+    "mrr": 1,
+    "results": 10,
+    "withPrice": 10,
+    "latencyMs": 1120
+   },
+   "web": {
+    "p5": 0,
+    "r10": 0.18181818181818182,
+    "mrr": 0.125,
+    "results": 10,
+    "product": 2,
+    "wrongSite": 8,
+    "nonProduct": 0,
+    "offsite": 0
+   }
+  },
+  {
+   "id": "q03",
+   "kind": "exact",
+   "query": "50mm PVC pressure pipe 3m",
+   "relevant": 1,
+   "site": {
+    "p5": 0,
+    "r10": 1,
+    "mrr": 0.14285714285714285,
+    "results": 10,
+    "withPrice": 10,
+    "latencyMs": 1095
+   },
+   "web": {
+    "p5": 0.2,
+    "r10": 1,
+    "mrr": 1,
+    "results": 10,
+    "product": 7,
+    "wrongSite": 3,
+    "nonProduct": 0,
+    "offsite": 0
+   }
+  },
+  {
+   "id": "q04",
+   "kind": "spec",
+   "query": "M10 eye bolt galvanised",
+   "relevant": 3,
+   "site": {
+    "p5": 0.6,
+    "r10": 1,
+    "mrr": 1,
+    "results": 10,
+    "withPrice": 10,
+    "latencyMs": 1010
+   },
+   "web": {
+    "p5": 0.2,
+    "r10": 0.3333333333333333,
+    "mrr": 1,
+    "results": 10,
+    "product": 2,
+    "wrongSite": 6,
+    "nonProduct": 0,
+    "offsite": 2
+   }
+  },
+  {
+   "id": "q05",
+   "kind": "spec",
+   "query": "M12 threaded rod 1m",
+   "relevant": 1,
+   "site": {
+    "p5": 0,
+    "r10": 0,
+    "mrr": 0,
+    "results": 10,
+    "withPrice": 10,
+    "latencyMs": 1064
+   },
+   "web": {
+    "p5": 0,
+    "r10": 1,
+    "mrr": 0.16666666666666666,
+    "results": 10,
+    "product": 3,
+    "wrongSite": 3,
+    "nonProduct": 3,
+    "offsite": 1
+   }
+  },
+  {
+   "id": "q06",
+   "kind": "spec",
+   "query": "structural plywood 17mm",
+   "relevant": 5,
+   "site": {
+    "p5": 0.6,
+    "r10": 0.6,
+    "mrr": 1,
+    "results": 10,
+    "withPrice": 10,
+    "latencyMs": 806
+   },
+   "web": {
+    "p5": 0.6,
+    "r10": 0.8,
+    "mrr": 0.5,
+    "results": 10,
+    "product": 5,
+    "wrongSite": 3,
+    "nonProduct": 1,
+    "offsite": 1
+   }
+  },
+  {
+   "id": "q07",
+   "kind": "spec",
+   "query": "batten screws 14g x 75mm",
+   "relevant": 8,
+   "site": {
+    "p5": 1,
+    "r10": 1,
+    "mrr": 1,
+    "results": 10,
+    "withPrice": 10,
+    "latencyMs": 1078
+   },
+   "web": {
+    "p5": 0.8,
+    "r10": 1,
+    "mrr": 1,
+    "results": 10,
+    "product": 8,
+    "wrongSite": 2,
+    "nonProduct": 0,
+    "offsite": 0
+   }
+  },
+  {
+   "id": "q08",
+   "kind": "spec",
+   "query": "hex bolt M8 x 50 zinc",
+   "relevant": 3,
+   "site": {
+    "p5": 0.6,
+    "r10": 1,
+    "mrr": 1,
+    "results": 10,
+    "withPrice": 10,
+    "latencyMs": 1013
+   },
+   "web": {
+    "p5": 0.4,
+    "r10": 0.6666666666666666,
+    "mrr": 1,
+    "results": 10,
+    "product": 6,
+    "wrongSite": 4,
+    "nonProduct": 0,
+    "offsite": 0
+   }
+  },
+  {
+   "id": "q09",
+   "kind": "vague",
+   "query": "flat metal plate with holes",
+   "relevant": 13,
+   "site": {
+    "p5": 0.8,
+    "r10": 0.38461538461538464,
+    "mrr": 1,
+    "results": 10,
+    "withPrice": 10,
+    "latencyMs": 1090
+   },
+   "web": {
+    "p5": 0.8,
+    "r10": 0.6153846153846154,
+    "mrr": 1,
+    "results": 10,
+    "product": 9,
+    "wrongSite": 0,
+    "nonProduct": 1,
+    "offsite": 0
+   }
+  },
+  {
+   "id": "q10",
+   "kind": "vague",
+   "query": "bolt threaded both ends",
+   "relevant": 1,
+   "site": {
+    "p5": 0,
+    "r10": 0,
+    "mrr": 0,
+    "results": 10,
+    "withPrice": 10,
+    "latencyMs": 1338
+   },
+   "web": {
+    "p5": 0.2,
+    "r10": 1,
+    "mrr": 0.5,
+    "results": 10,
+    "product": 5,
+    "wrongSite": 5,
+    "nonProduct": 0,
+    "offsite": 0
+   }
+  },
+  {
+   "id": "q11",
+   "kind": "vague",
+   "query": "post anchor for decking",
+   "relevant": 15,
+   "site": {
+    "p5": 0.8,
+    "r10": 0.6,
+    "mrr": 1,
+    "results": 10,
+    "withPrice": 10,
+    "latencyMs": 876
+   },
+   "web": {
+    "p5": 0.6,
+    "r10": 0.4,
+    "mrr": 1,
+    "results": 10,
+    "product": 6,
+    "wrongSite": 3,
+    "nonProduct": 0,
+    "offsite": 1
+   }
+  },
+  {
+   "id": "q12",
+   "kind": "vague",
+   "query": "bracket to hang a shelf on a wall",
+   "relevant": 9,
+   "site": {
+    "p5": 0.4,
+    "r10": 0.5555555555555556,
+    "mrr": 0.3333333333333333,
+    "results": 10,
+    "withPrice": 10,
+    "latencyMs": 1245
+   },
+   "web": {
+    "p5": 0.2,
+    "r10": 0.4444444444444444,
+    "mrr": 0.2,
+    "results": 10,
+    "product": 5,
+    "wrongSite": 0,
+    "nonProduct": 5,
+    "offsite": 0
+   }
+  },
+  {
+   "id": "q13",
+   "kind": "vague",
+   "query": "concrete crack filler",
+   "relevant": 3,
+   "site": {
+    "p5": 0.4,
+    "r10": 0.6666666666666666,
+    "mrr": 1,
+    "results": 10,
+    "withPrice": 10,
+    "latencyMs": 1025
+   },
+   "web": {
+    "p5": 0.2,
+    "r10": 0.6666666666666666,
+    "mrr": 1,
+    "results": 10,
+    "product": 2,
+    "wrongSite": 1,
+    "nonProduct": 7,
+    "offsite": 0
+   }
+  },
+  {
+   "id": "q14",
+   "kind": "brand",
+   "query": "Pryda joist hanger",
+   "relevant": 15,
+   "site": {
+    "p5": 1,
+    "r10": 0.6666666666666666,
+    "mrr": 1,
+    "results": 10,
+    "withPrice": 10,
+    "latencyMs": 1147
+   },
+   "web": {
+    "p5": 1,
+    "r10": 0.6666666666666666,
+    "mrr": 1,
+    "results": 10,
+    "product": 10,
+    "wrongSite": 0,
+    "nonProduct": 0,
+    "offsite": 0
+   }
+  },
+  {
+   "id": "q15",
+   "kind": "brand",
+   "query": "Ryobi 18v drill",
+   "relevant": 8,
+   "site": {
+    "p5": 0.8,
+    "r10": 1,
+    "mrr": 1,
+    "results": 10,
+    "withPrice": 10,
+    "latencyMs": 1012
+   },
+   "web": {
+    "p5": 0,
+    "r10": 0,
+    "mrr": 0,
+    "results": 10,
+    "product": 0,
+    "wrongSite": 3,
+    "nonProduct": 0,
+    "offsite": 7
+   }
+  },
+  {
+   "id": "q16",
+   "kind": "brand",
+   "query": "Makita impact driver",
+   "relevant": 11,
+   "site": {
+    "p5": 0.8,
+    "r10": 0.8181818181818182,
+    "mrr": 1,
+    "results": 10,
+    "withPrice": 10,
+    "latencyMs": 844
+   },
+   "web": {
+    "p5": 1,
+    "r10": 0.6363636363636364,
+    "mrr": 1,
+    "results": 10,
+    "product": 7,
+    "wrongSite": 3,
+    "nonProduct": 0,
+    "offsite": 0
+   }
+  },
+  {
+   "id": "q17",
+   "kind": "brand",
+   "query": "Selleys No More Gaps",
+   "relevant": 13,
+   "site": {
+    "p5": 1,
+    "r10": 0.7692307692307693,
+    "mrr": 1,
+    "results": 10,
+    "withPrice": 10,
+    "latencyMs": 1053
+   },
+   "web": {
+    "p5": 0.8,
+    "r10": 0.6923076923076923,
+    "mrr": 1,
+    "results": 10,
+    "product": 10,
+    "wrongSite": 0,
+    "nonProduct": 0,
+    "offsite": 0
+   }
+  },
+  {
+   "id": "q18",
+   "kind": "small",
+   "query": "nyloc nut M10",
+   "relevant": 2,
+   "site": {
+    "p5": 0,
+    "r10": 0,
+    "mrr": 0,
+    "results": 10,
+    "withPrice": 10,
+    "latencyMs": 942
+   },
+   "web": {
+    "p5": 0.4,
+    "r10": 1,
+    "mrr": 0.5,
+    "results": 10,
+    "product": 5,
+    "wrongSite": 2,
+    "nonProduct": 2,
+    "offsite": 1
+   }
+  },
+  {
+   "id": "q19",
+   "kind": "small",
+   "query": "washer M12 galvanised",
+   "relevant": 11,
+   "site": {
+    "p5": 1,
+    "r10": 0.8181818181818182,
+    "mrr": 1,
+    "results": 10,
+    "withPrice": 10,
+    "latencyMs": 1386
+   },
+   "web": {
+    "p5": 1,
+    "r10": 0.8181818181818182,
+    "mrr": 1,
+    "results": 10,
+    "product": 9,
+    "wrongSite": 1,
+    "nonProduct": 0,
+    "offsite": 0
+   }
+  },
+  {
+   "id": "q20",
+   "kind": "small",
+   "query": "self drilling screw 12g x 20mm",
+   "relevant": 9,
+   "site": {
+    "p5": 0.4,
+    "r10": 0.4444444444444444,
+    "mrr": 0.3333333333333333,
+    "results": 10,
+    "withPrice": 10,
+    "latencyMs": 995
+   },
+   "web": {
+    "p5": 1,
+    "r10": 1,
+    "mrr": 1,
+    "results": 10,
+    "product": 9,
+    "wrongSite": 1,
+    "nonProduct": 0,
+    "offsite": 0
+   }
+  }
+ ]
+}
