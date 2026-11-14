@@ -1,0 +1,346 @@
+{
+ "date": "2026-11-14",
+ "tool": "Claude Code WebSearch tool, standard mode, query suffixed with site:bunnings.com.au; first 10 result URLs in returned order",
+ "rows": [
+  {
+   "id": "q01",
+   "query": "treated pine 90x45 2.4m",
+   "webQuery": "treated pine 90x45 2.4m site:bunnings.com.au",
+   "urls": [
+    "https://www.bunnings.com.au/90-x-45mm-outdoor-framing-h3-treated-pine-2-4m_p8032172",
+    "https://www.bunnings.com.au/products/building-hardware/timber/framing-timber",
+    "https://www.bunnings.com.au/our-range/building-hardware/timber/structural",
+    "https://www.bunnings.com.au/products/building-hardware/timber/framing-timber/structural-pine/treated-structural-pine",
+    "https://www.bunnings.com.au/90-x-45mm-framing-mgp10-h2-blue-pine-2-4m_p8031022",
+    "https://bunnings.com.au/products/building-hardware/timber",
+    "https://www.bunnings.com.au/90-x-45mm-framing-mgp10-untreated-pine-2-4m_p8030079",
+    "https://www.bunnings.com.au/our-range/building-hardware/timber",
+    "https://www.bunnings.co.nz/90-x-45mm-sg8-h1-2-kd-treated-radiata-timber-framing-2-4m_p0616333",
+    "https://www.bunnings.com.au/90-x-45mm-framing-mgp10-h2-blue-pine-2-7m_p8031023"
+   ]
+  },
+  {
+   "id": "q02",
+   "query": "Dulux Weathershield 4L",
+   "webQuery": "Dulux Weathershield 4L site:bunnings.com.au",
+   "urls": [
+    "https://www.bunnings.co.nz/dulux-4l-ultra-deep-low-sheen-weathershield-exterior-paint-4l_p0144796",
+    "https://www.bunnings.co.nz/dulux-4l-vivid-white-matt-weathershield-exterior-paint-4l_p0144829",
+    "https://www.bunnings.co.nz/dulux-4l-extra-bright-gloss-weathershield-exterior-paint-4l_p0144742",
+    "https://www.bunnings.co.nz/dulux-4l-extra-bright-low-sheen-weathershield-exterior-paint-4l_p0144825",
+    "https://www.bunnings.co.nz/dulux-4l-vivid-white-low-sheen-weathershield-exterior-paint-4l_p0144763",
+    "https://www.bunnings.co.nz/dulux-4l-blue-low-sheen-weathershield-exterior-paint-4l_p0144817",
+    "https://www.bunnings.co.nz/dulux-4l-deep-low-sheen-weathershield-exterior-paint_p0144778",
+    "https://www.bunnings.com.au/dulux-surfmist-low-sheen-weathershield-exterior-paint-4l_p0680693",
+    "https://trade.bunnings.com.au/dulux-4l-blue-gloss-weathershield-exterior-paint-4l_p0144727",
+    "https://www.bunnings.com.au/dulux-4l-extra-bright-matt-weathershield-exterior-paint-4l_p0144837"
+   ]
+  },
+  {
+   "id": "q03",
+   "query": "50mm PVC pressure pipe 3m",
+   "webQuery": "50mm PVC pressure pipe 3m site:bunnings.com.au",
+   "urls": [
+    "https://www.bunnings.com.au/holman-50mm-x-3m-class-12-pvc-pressure-pipe_p4750154",
+    "https://www.bunnings.com.au/holman-50mm-x-3m-pvc-pressure-pipe-class-12_p4750154",
+    "https://www.bunnings.com.au/holman-50mm-x-3m-pvc-dwv-pipe_p4770351",
+    "https://www.bunnings.com.au/holman-50mm-x-6m-pvc-dwv-pipe_p4770352",
+    "https://trade.bunnings.com.au/holman-50mm-x-6m-class-12-pvc-pressure-pipe_p4750155",
+    "https://www.bunnings.com.au/holman-150mm-x-3m-pvc-dwv-pipe_p0084041",
+    "https://www.bunnings.co.nz/marley-50mm-pvc-pressure-pipe-clip_p0332488",
+    "https://www.bunnings.co.nz/holman-50mm-x-1m-class-12-pvc-pressure-pipe_p4750213",
+    "https://www.bunnings.com.au/_p4750039",
+    "https://www.bunnings.com.au/holman-40mm-x-3m-class-12-pvc-pressure-pipes_p4750043"
+   ]
+  },
+  {
+   "id": "q04",
+   "query": "M10 eye bolt galvanised",
+   "webQuery": "M10 eye bolt galvanised site:bunnings.com.au",
+   "urls": [
+    "https://www.bunnings.com.au/pinnacle-m10-x-148-x-25mm-galvanised-eye-bolt_p0740691",
+    "https://www.bunnings.co.nz/pinnacle-m10x148x25mm-galvanised-eye-bolt-pk1_p0740691",
+    "https://www.bunnings.co.nz/pinnacle-m10x110x25mm-galvanised-eye-bolt-pk1_p0740699",
+    "https://www.bunnings.co.nz/pinnacle-m10x200x25mm-galvanised-eye-bolt-pk1_p0740715",
+    "https://www.bunnings.co.nz/pinnacle-m10x145x52mm-7x50mm-galvanised-ring-bolt-1pk_p0740631",
+    "https://www.bunnings.com.au/pinnacle-m10-x-125-x-25mm-zinc-plated-eye-bolt_p0740558",
+    "https://www.bunnings.co.nz/pinnacle-m10x125x25mm-zinc-plated-eye-bolt-pk1_p0740558",
+    "https://www.bunnings.co.nz/pinnacle-m10x75x25mm-zinc-plated-eye-bolt-pk1_p0740546",
+    "https://au.rs-online.com/web/p/eye-bolts/1244839",
+    "https://stagwp.idlvr.com.au/?p=35277"
+   ]
+  },
+  {
+   "id": "q05",
+   "query": "M12 threaded rod 1m",
+   "webQuery": "M12 threaded rod 1m site:bunnings.com.au",
+   "urls": [
+    "https://www.bunnings.com.au/products/building-hardware/fasteners-fixings/nuts-bolts/threaded-rod",
+    "https://www.bunnings.co.nz/oxbuild-m12-x-1m-zinc-plated-threaded-rod_p8900287",
+    "https://www.bunnings.co.nz/oxbuild-m12-x-1m-galvanised-steel-threaded-rod_p8900347",
+    "https://www.bunnings.com.au/our-range/building-hardware/fixings-fasteners/bolts/threaded-rod",
+    "https://www.bunnings.co.nz/oxbuild-m12-x-1m-stainless-steel-threaded-rod_p8900167",
+    "https://www.bunnings.com.au/macsim-m12-x-1-2m-hot-dipped-galvanised-threaded-rod_p2410266",
+    "https://www.bunnings.co.nz/products/building-hardware/fasteners-fixings/nuts-bolts/threaded-rod",
+    "https://www.bunnings.com.au/hobson-m12-x-2570-threaded-rod_p2430073",
+    "https://au.rs-online.com/web/p/threaded-rods/0530359",
+    "https://www.bunnings.com.au/hobson-m12-x-3000mm-hot-dip-galvanised-threaded-rod_p1100047"
+   ]
+  },
+  {
+   "id": "q06",
+   "query": "structural plywood 17mm",
+   "webQuery": "structural plywood 17mm site:bunnings.com.au",
+   "urls": [
+    "https://www.bunnings.co.nz/ibuilt-17-x-1200-x-2400mm-dd-h3-2-structural-plywood_p0327792",
+    "https://www.bunnings.com.au/structaply-1200-x-595-x-17mm-f14-plywood-formwork_p0390167",
+    "https://www.bunnings.com.au/structaply-2400-x-1200-x-17mm-f14-plywood-formwork_p0390072",
+    "https://www.bunnings.co.nz/ibuilt-17-x-1200-x-2400mm-dd-untreated-structural-plywood_p0327795",
+    "https://www.bunnings.com.au/specrite-1800-x-1200mm-17mm-formply-f17_p0390220",
+    "https://www.bunnings.com.au/carter-holt-harvey-1200-x-595mm-17mm-f14-formrite-formply_p0390167",
+    "https://www.bunnings.com.au/our-range/building-hardware/building-boards/structural-plywood",
+    "https://www.bunnings.com.au/ecoply-2700-x-1200mm-17mm-flooring-f11-plywood-pine-t-g_p0030000",
+    "https://www.bunnings.co.nz/tigerply-2400-x-1200-x-17mm-okoume-plywood_p0345108",
+    "https://www.bowens.com.au/p/17mm-plywood-f17-structural-flooring/"
+   ]
+  },
+  {
+   "id": "q07",
+   "query": "batten screws 14g x 75mm",
+   "webQuery": "batten screws 14g x 75mm site:bunnings.com.au",
+   "urls": [
+    "https://www.bunnings.com.au/titan-14g-x-75mm-cl3-gal-bugle-batten-screw-100-pack_p0579092",
+    "https://www.bunnings.com.au/buildex-14g-x-75mm-class-4-bugle-batten-screws-100-pack_p0890609",
+    "https://www.bunnings.com.au/titan-14g-x-75mm-cl3-gal-bugle-batten-screw-25-pack_p1052134",
+    "https://www.bunnings.co.nz/building-king-14g-x-75mm-c4-galvanised-batten-screw-100-pack_p0379651",
+    "https://www.bunnings.com.au/buildex-14g-x-75mm-class-4-bugle-batten-screws-25-pack_p0890592",
+    "https://www.bunnings.com.au/titan-14g-x-75mm-zinc-gold-timber-bugle-batten-screw-100-pack_p0579085",
+    "https://www.bunnings.com.au/titan-14g-x-75mm-cl3-gal-bugle-batten-screw-500-pack_p0579087",
+    "https://www.bunnings.com.au/buildex-14g-x-75mm-class-4-bugle-batten-screws-500-pack_p0890596",
+    "https://www.bunnings.co.nz/buildex-14g-x-75mm-class-4-bugle-batten-screws-500-pack_p0890596",
+    "https://www.bunnings.com.au/titan-14g-x-75mm-timber-zinc-gold-bugle-batten-screw-25-pack_p0579082"
+   ]
+  },
+  {
+   "id": "q08",
+   "query": "hex bolt M8 x 50 zinc",
+   "webQuery": "hex bolt M8 x 50 zinc site:bunnings.com.au",
+   "urls": [
+    "https://www.bunnings.com.au/zenith-m8-x-50mm-zinc-plated-hex-head-bolts-and-nuts-each_p0605816",
+    "https://www.bunnings.com.au/pinnacle-m8-x-50mm-yellow-zinc-hi-tensile-hex-bolt-and-nut-4-pack_p2320078",
+    "https://www.bunnings.co.nz/pinnacle-m8-x-50mm-zinc-plated-hex-head-bolts-and-nuts-4-pack_p0168447",
+    "https://www.bunnings.co.nz/zenith-m8-x-50mm-zinc-plated-hex-head-bolt-and-nut_p0237800",
+    "https://www.bunnings.com.au/zenith-m8-x-50mm-hot-dipped-galvanised-hex-head-bolt-and-nut-each_p2310065",
+    "https://www.bunnings.com.au/zenith-m8-x-50mm-hot-dip-galvanised-hex-head-bolts-and-nuts-25-pack_p2260592",
+    "https://www.bunnings.co.nz/zenith-m8-x-50mm-galvanised-bolt-and-nut-hex_p0239487",
+    "https://www.bunnings.co.nz/pinnacle-m8-x-50mm-stainless-steel-hex-bolt-and-nut-2-pack_p2260412",
+    "https://www.bunnings.com.au/zenith-m8-x-50mm-stainless-steel-hex-head-coach-screw_p2310591",
+    "https://www.bunnings.com.au/zenith-m8-zinc-plated-hex-nuts_p0605796"
+   ]
+  },
+  {
+   "id": "q09",
+   "query": "flat metal plate with holes",
+   "webQuery": "flat metal plate with holes site:bunnings.com.au",
+   "urls": [
+    "https://www.bunnings.com.au/carinya-600-x-40-x-1mm-galvanised-flat-plate-make-a-bracket_p3975882",
+    "https://www.bunnings.com.au/carinya-600-x-80-x-1mm-galvanised-flat-plate-make-a-bracket_p3975905",
+    "https://www.bunnings.com.au/carinya-20-x-600-x-1mm-flat-make-a-bracket_p3975874",
+    "https://www.bunnings.com.au/carinya-200-x-60-x-1mm-galvanised-flat-plate-make-a-bracket_p3975832",
+    "https://workshop.bunnings.com.au/t5/Garage-and-Shed/How-to-attach-to-a-metal-plate-with-holes/m-p/78453",
+    "https://www.bunnings.com.au/carinya-200-x-100-x-1mm-galvanised-flat-plate-make-a-bracket_p3975858",
+    "https://www.bunnings.com.au/carinya-200-x-200-x-1mm-flat-make-a-bracket-single_p3975866",
+    "https://www.bunnings.com.au/carinya-40-x-200-x-2mm-galvanised-flat-plate-make-a-bracket_p3960602",
+    "https://www.bunnings.com.au/carinya-20-x-200-x-2mm-flat-make-a-bracket_p3960600",
+    "https://www.bunnings.com.au/sunrise-2-3-hole-universal-coupling-hitch-plate-triangular-6mm-3hcpn_p0576269"
+   ]
+  },
+  {
+   "id": "q10",
+   "query": "bolt threaded both ends",
+   "webQuery": "bolt threaded both ends site:bunnings.com.au",
+   "urls": [
+    "https://www.bunnings.co.nz/everhang-m6-x-48mm-zinc-plated-hanger-bolt-4-pack_p2310854",
+    "https://www.bunnings.com.au/everhang-m8-x-80mm-zinc-plated-hanger-bolt-4-pack_p2310840",
+    "https://trade.bunnings.com.au/vuepro-m16-150-230mm-concealed-thread-bolt-2-pack_p0647343",
+    "https://www.bunnings.co.nz/pinnacle-m8-x-30mm-yellow-zinc-hi-tensile-hex-bolt-and-nut-4-pack_p2320075",
+    "https://www.bunnings.com.au/pinnacle-m10-x-180-x-74mm-zinc-plated-hook-bolt_p0740724",
+    "https://www.bunnings.co.nz/pinnacle-m6-x-16mm-yellow-zinc-hi-tensile-hex-bolt-nut-10-pack_p2320060",
+    "https://www.bunnings.co.nz/pinnacle-m10-x-65mm-stainless-steel-hex-bolt-and-nut-2-pack_p2280001",
+    "https://www.bunnings.com.au/pinnacle-1-4-x-1-2-yellow-zinc-imperial-hex-bolt-and-nut-10-pack_p2320015",
+    "https://www.bunnings.com.au/pinnacle-1-4-x-3-4-yellow-zinc-imperial-hex-bolt-and-nut-10-pack_p2320016",
+    "https://www.bunnings.com.au/pinnacle-m5-x-16mm-yellow-zinc-hi-tensile-hex-bolt-and-nut-10-pack_p2320055"
+   ]
+  },
+  {
+   "id": "q11",
+   "query": "post anchor for decking",
+   "webQuery": "post anchor for decking site:bunnings.com.au",
+   "urls": [
+    "https://www.bunnings.com.au/pryda-100mm-m10-bolt-down-w-washer-post-anchor_p0503003",
+    "https://www.bunnings.com.au/pryda-100mm-m10-bolt-down-w-raised-mount-post-anchor_p0503010",
+    "https://www.mitre10.com.au/dunnings-adjustable-post-anchors-t-blade-hdg-130-x-250-x-10-with-130-x-50mm-base-7519762",
+    "https://trade.bunnings.com.au/pryda-65mm-m12-half-stirrup-post-anchor_p0502991",
+    "https://www.bunnings.com.au/tuff-range-150mm-adjustable-post-anchor_p0038662",
+    "https://trade.bunnings.com.au/tuff-range-150mm-x-600mm-galvanised-heavy-duty-post-anchor_p0035920",
+    "https://trade.bunnings.com.au/tuff-range-140mm-x-600mm-galvanised-heavy-duty-post-anchor_p0035919",
+    "https://www.bunnings.com.au/tuff-range-115mm-adjustable-post-anchor_p0049815",
+    "https://www.bunnings.com.au/pryda-65mm-m12-half-stirrup-post-anchor_p0502991",
+    "https://www.bunnings.com.au/pryda-100mm-m12-bolt-down-w-raised-mount-post-anchor_p0502993"
+   ]
+  },
+  {
+   "id": "q12",
+   "query": "bracket to hang a shelf on a wall",
+   "webQuery": "bracket to hang a shelf on a wall site:bunnings.com.au",
+   "urls": [
+    "https://www.bunnings.com.au/diy-advice/indoor/study/how-to-hang-a-shelf-on-the-wall",
+    "https://www.bunnings.com.au/diy-advice/home-improvement/shelving-and-storage/how-to-hang-a-shelf-on-the-wall",
+    "https://www.bunnings.com.au/diy-advice/home-improvement/shelving-and-storage/how-to-build-a-shelf",
+    "https://www.bunnings.co.nz/diy-advice/home-improvement/shelving-and-storage/how-to-hang-a-shelf-on-the-wall",
+    "https://www.bunnings.com.au/flexi-storage-270mm-white-double-slot-bracket_p2583647",
+    "https://www.workshop.bunnings.com.au/t5/Living-and-Bedroom/What-Sheoak-shelf-supports/m-p/310814",
+    "https://www.bunnings.com.au/flexi-storage-350mm-white-wire-shelf-bracket_p2660965",
+    "https://www.bunnings.com.au/flexi-storage-200mm-black-s-track-shelving-single-bracket_p2580146",
+    "https://www.bunnings.com.au/flexi-storage-250mm-white-s-track-shelving-single-bracket_p2580149",
+    "https://www.bunnings.com.au/flexi-storage-250mm-black-s-track-shelving-single-bracket_p2580150"
+   ]
+  },
+  {
+   "id": "q13",
+   "query": "concrete crack filler",
+   "webQuery": "concrete crack filler site:bunnings.com.au",
+   "urls": [
+    "https://www.bunnings.com.au/gripset-betta-1l-concrete-crack-filler_p0960222",
+    "https://workshop.bunnings.com.au/t5/How-To/How-to-fill-a-joint-in-a-concrete-slab/bc-p/232970",
+    "https://www.workshop.bunnings.com.au/t5/How-To/How-to-fill-a-joint-in-a-concrete-slab/bc-p/259925",
+    "https://www.workshop.bunnings.com.au/t5/Living-and-Bedroom/How-to-fill-cracks-in-concrete-fireplace-wall/m-p/318630",
+    "https://www.workshop.bunnings.com.au/discussion/182496/how-to-fill-gap-between-wall-and-concrete-pation-and-crack-along-bay-window",
+    "https://workshop.bunnings.com.au:443/t5/How-To/How-to-fill-a-joint-in-a-concrete-slab/ba-p/224897",
+    "https://www.bunnings.co.nz/gripset-betta-1l-concrete-crack-filler_p0269378",
+    "https://www.workshop.bunnings.com.au/t5/Outdoor/How-can-I-properly-seal-the-crack-in-our-driveway/m-p/205682",
+    "https://www.bunnings.com.au/dulux-avista-concrete-crack-repair-kit-part-a-b_p0355650",
+    "https://www.workshop.bunnings.com.au/t5/Garage-and-Shed/How-to-fix-cracks-on-the-floor/td-p/278692"
+   ]
+  },
+  {
+   "id": "q14",
+   "query": "Pryda joist hanger",
+   "webQuery": "Pryda joist hanger site:bunnings.com.au",
+   "urls": [
+    "https://www.bunnings.com.au/pryda-joist-hanger-to-suit-38-x-90mm_p0294192",
+    "https://www.bunnings.com.au/pryda-joist-hanger-to-suit-35-x-120mm_p0294172",
+    "https://www.bunnings.com.au/pryda-joist-hanger-to-suit-45-x-180mm_p0294200",
+    "https://www.bunnings.com.au/pryda-joist-hanger-to-suit-45-x-120mm_p0294195",
+    "https://www.bunnings.com.au/pryda-joist-hanger-to-suit-38-x-180mm_p0294186",
+    "https://www.bunnings.com.au/pryda-joist-hanger-to-suit-45-x-220mm_p0294203",
+    "https://www.bunnings.com.au/pryda-joist-hanger-suits-90-x-200mm_p1130011",
+    "https://www.bunnings.com.au/pryda-joist-hanger-to-suit-38-x-140mm_p0294184",
+    "https://www.bunnings.com.au/pryda-joist-hanger-to-suit-45-x-140mm_p0294197",
+    "https://www.bunnings.com.au/pryda-joist-hanger-to-suit-38-x-120mm_p0294181"
+   ]
+  },
+  {
+   "id": "q15",
+   "query": "Ryobi 18v drill",
+   "webQuery": "Ryobi 18v drill site:bunnings.com.au",
+   "urls": [
+    "https://www.ryobi.com.au/products/drill-drivers/18v-one-drill-driver-20ah-kit-0",
+    "https://www.ryobi.com.au/power-tools/drills-drivers/impact-drivers",
+    "https://ryobi.com.au/products/details/18v-one-drill-driver-tool-only-rdd18",
+    "https://www.ryobi.com.au/interest/automotive/allproducts",
+    "https://ryobi.com.au/products/hammer-drills/18v-one-hammer-drill",
+    "https://www.bunnings.co.nz/ryobi-18v-one-hp-brushless-compact-hammer-drill-4ah-kit-link-organiser_p0909752",
+    "https://www.bunnings.co.nz/ryobi-18v-one-hp-brushless-drill-drive-2ah-kit_p1181046",
+    "https://www.ryobi.com.au/products/drill-drivers/18v-one-drill-driver-tool-only-0",
+    "https://www.ryobi.com.au/products/drill-drivers/18v-one-hptm-brushless-compact-drill-driver-tool-only-0",
+    "https://www.bunnings.co.nz/ryobi-18v-one-hp-brushless-angle-drill-rad18c-tool-only_p0249433"
+   ]
+  },
+  {
+   "id": "q16",
+   "query": "Makita impact driver",
+   "webQuery": "Makita impact driver site:bunnings.com.au",
+   "urls": [
+    "https://www.bunnings.com.au/makita-18v-impact-driver-dtd152z-skin-only_p6240335",
+    "https://www.bunnings.com.au/makita-18v-oil-impulse-impact-driver-dts141z-skin-only_p0066574",
+    "https://www.bunnings.com.au/makita-18v-brushless-impact-driver-dtd157z-skin-only_p0667786",
+    "https://www.bunnings.com.au/makita-18v-angle-impact-driver-dtl061z-skin-only_p0501084",
+    "https://www.bunnings.com.au/makita-18v-mobile-brushless-4-mode-impact-driver-dtd154z-skin-only_p8901067",
+    "https://www.bunnings.com.au/makita-18v-brushless-4-stage-impact-driver-dtd173z-skin-only_p0713701",
+    "https://trade.bunnings.com.au/makita-18v-impact-driver-dtd152z-skin-only_p6240335",
+    "https://www.bunnings.co.nz/makita-lxt-18v-high-torque-impact-driver-dtd201z-skin-only_p0987674",
+    "https://www.bunnings.com.au/makita-18v-brushless-4-stage-impact-driver-dtd201z_p0987674",
+    "https://www.bunnings.co.nz/makita-40v-xgt-high-torque-impact-driver-skin-td004gz_p0941673"
+   ]
+  },
+  {
+   "id": "q17",
+   "query": "Selleys No More Gaps",
+   "webQuery": "Selleys No More Gaps site:bunnings.com.au",
+   "urls": [
+    "https://www.bunnings.com.au/selleys-130g-no-more-gaps-bathroom-and-kitchen-gap-filler_p0281572",
+    "https://www.bunnings.com.au/_p0281572",
+    "https://www.bunnings.com.au/selleys-450g-brilliant-white-no-more-gaps-gap-filler_p1232886",
+    "https://www.bunnings.com.au/selleys-410g-white-no-more-gaps-bathroom-and-kitchen-gap-filler_p1230112",
+    "https://www.bunnings.com.au/selleys-450g-cedar-interior-no-more-gaps_p1232909",
+    "https://www.bunnings.com.au/selleys-450g-brown-interior-no-more-gaps_p1232933",
+    "https://www.bunnings.com.au/_p1230010",
+    "https://www.bunnings.com.au/selleys-475g-no-more-gaps-interior-fast-dry-gap-filler_p1230089",
+    "https://www.bunnings.com.au/selleys-no-more-gaps-380g-jarrah-timber-floor-filler_p1230158",
+    "https://www.bunnings.com.au/selleys-450g-cream-interior-colours-no-more-gaps_p1232894"
+   ]
+  },
+  {
+   "id": "q18",
+   "query": "nyloc nut M10",
+   "webQuery": "nyloc nut M10 site:bunnings.com.au",
+   "urls": [
+    "https://www.bunnings.co.nz/zenith-m10-316-stainless-steel-nyloc-nut_p0249097",
+    "https://www.bunnings.com.au/pinnacle-m10-zinc-plated-nylon-lock-nut-4-pack_p0125995",
+    "https://www.bunnings.co.nz/pinnacle-m10-stainless-steel-nylon-lock-nut-4-pack_p1100812",
+    "https://www.bunnings.com.au/products/building-hardware/fasteners-fixings/nuts-bolts/nuts?page=3",
+    "https://www.bunnings.com.au/pinnacle-m10-galvanised-nylon-lock-nut-10-pack_p0098465",
+    "https://www.bunnings.com.au/richmond-m10-through-nut_p0244343",
+    "https://www.bunnings.co.nz/products/building-hardware/fasteners-fixings/nuts-bolts/nuts",
+    "https://www.bunnings.com.au/hobson-m10-zinc-plated-hex-nut_p1100219",
+    "https://redshed.au/product/m10-nut-nyloc-metric-coarse-cl10-zinc/",
+    "https://www.bunnings.com.au/hobson-m10-galvanised-hex-nut_p1100216"
+   ]
+  },
+  {
+   "id": "q19",
+   "query": "washer M12 galvanised",
+   "webQuery": "washer M12 galvanised site:bunnings.com.au",
+   "urls": [
+    "https://www.bunnings.com.au/hobson-engineering-m12-38-x-38-x-3mm-galvanised-square-washer_p1100182",
+    "https://www.bunnings.com.au/hobson-engineering-m12-galvanised-round-washer-200-pack_p1100071",
+    "https://www.bunnings.com.au/hobson-engineering-m12-galvanised-round-washer_p1100222",
+    "https://www.bunnings.com.au/macsim-38-x-38-x-3mm-m12-galvanised-square-washer-each_p1101089",
+    "https://www.bunnings.com.au/hobson-engineering-m12-50-x-3mm-galvanised-square-washer-200-box_p1100081",
+    "https://www.bunnings.com.au/macsim-50-x-50-x-3mm-m12-galvanised-square-washer-each_p1101092",
+    "https://www.bunnings.com.au/hobson-m12-galvanised-spring-washer-each_p0011510",
+    "https://www.bunnings.com.au/zenith-m12-hot-dip-galvanised-flat-round-washers-each_p2442088",
+    "https://www.bunnings.co.nz/zenith-m12-x-28mm-galvanised-round-flat-washer_p0250366",
+    "https://www.bunnings.com.au/zenith-m12-hot-dip-galvanised-flat-round-washers-200-pack_p1101042"
+   ]
+  },
+  {
+   "id": "q20",
+   "query": "self drilling screw 12g x 20mm",
+   "webQuery": "self drilling screw 12g x 20mm site:bunnings.com.au",
+   "urls": [
+    "https://www.bunnings.com.au/buildex-12g-x-20mm-class-4-sheet-metal-screws-50-pack_p0920372",
+    "https://www.bunnings.com.au/buildex-12g-x-20mm-class-4-metal-cladding-teks-screws-with-seal-100-pack_p0920318",
+    "https://www.bunnings.com.au/buildex-12g-x-20mm-class-4-metal-cladding-teks-screws-with-seal-50-pack_p0920480",
+    "https://www.bunnings.com.au/buildex-12g-x-20mm-class-4-sheet-metal-screws-15-pack_p0920320",
+    "https://www.bunnings.com.au/buildex-12g-x-20mm-class-4-metal-cladding-teks-screws-with-seal-20-pack_p0920463",
+    "https://www.bunnings.com.au/buildex-12g-x-20mm-class-4-sheet-metal-screws-100-pack_p0920402",
+    "https://www.bunnings.com.au/buildex-12g-x-20mm-class-4-metal-cladding-teks-screws-with-seal-500-pack_p0920312",
+    "https://www.bunnings.com.au/buildex-12g-x-20mm-class-3-metal-teks-screws-50-pack_p0920222",
+    "https://www.bunnings.co.nz/buildex-12g-x-20mm-class-4-sheet-metal-screws-50-pack_p0920372",
+    "https://www.bunnings.com.au/buildex-12g-x-20mm-class-4-sheet-metal-screws-500-pack_p0920346"
+   ]
+  }
+ ]
+}

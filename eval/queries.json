@@ -1,26 +1,300 @@
 {
-  "criteria": "An item is relevant if a shopper who typed the query would plausibly buy it for the job described: it matches every stated spec (size, length, grade, finish, brand) or, for vague queries, is a standard product of the type the shopper is describing. Wrong size, wrong material, accessories for the item and different product types are not relevant. Variants of the same product in another size are relevant only when the query does not state a size.",
-  "store": "6400",
-  "queries": [
-    { "id": "q01", "kind": "exact", "query": "treated pine 90x45 2.4m", "relevant": [] },
-    { "id": "q02", "kind": "exact", "query": "Dulux Weathershield 4L", "relevant": [] },
-    { "id": "q03", "kind": "exact", "query": "50mm PVC pressure pipe 3m", "relevant": [] },
-    { "id": "q04", "kind": "spec", "query": "M10 eye bolt galvanised", "relevant": [] },
-    { "id": "q05", "kind": "spec", "query": "M12 threaded rod 1m", "relevant": [] },
-    { "id": "q06", "kind": "spec", "query": "structural plywood 17mm", "relevant": [] },
-    { "id": "q07", "kind": "spec", "query": "batten screws 14g x 75mm", "relevant": [] },
-    { "id": "q08", "kind": "spec", "query": "hex bolt M8 x 50 zinc", "relevant": [] },
-    { "id": "q09", "kind": "vague", "query": "flat metal plate with holes", "relevant": [] },
-    { "id": "q10", "kind": "vague", "query": "bolt threaded both ends", "relevant": [] },
-    { "id": "q11", "kind": "vague", "query": "post anchor for decking", "relevant": [] },
-    { "id": "q12", "kind": "vague", "query": "bracket to hang a shelf on a wall", "relevant": [] },
-    { "id": "q13", "kind": "vague", "query": "concrete crack filler", "relevant": [] },
-    { "id": "q14", "kind": "brand", "query": "Pryda joist hanger", "relevant": [] },
-    { "id": "q15", "kind": "brand", "query": "Ryobi 18v drill", "relevant": [] },
-    { "id": "q16", "kind": "brand", "query": "Makita impact driver", "relevant": [] },
-    { "id": "q17", "kind": "brand", "query": "Selleys No More Gaps", "relevant": [] },
-    { "id": "q18", "kind": "small", "query": "nyloc nut M10", "relevant": [] },
-    { "id": "q19", "kind": "small", "query": "washer M12 galvanised", "relevant": [] },
-    { "id": "q20", "kind": "small", "query": "self drilling screw 12g x 20mm", "relevant": [] }
-  ]
+ "criteria": "An item is relevant if a shopper who typed the query would plausibly buy it for the job described: it matches every stated spec (size, length, grade, finish, brand) or, for vague queries, is a standard product of the type the shopper is describing. Wrong size, wrong material, accessories for the item and different product types are not relevant. Variants of the same product in another size are relevant only when the query does not state a size. When nothing matches the stated spec exactly, the nearest acceptable substitute (same product type and thread size, length within 20 percent) counts. Labels cover the pool: the union of both arms top 10 for the query (web hits on bunnings.com.au only). Anything outside the pool is unlabelled and counts as not relevant.",
+ "store": "6400",
+ "queries": [
+  {
+   "id": "q01",
+   "kind": "exact",
+   "query": "treated pine 90x45 2.4m",
+   "relevant": [
+    "8032172",
+    "8031022"
+   ]
+  },
+  {
+   "id": "q02",
+   "kind": "exact",
+   "query": "Dulux Weathershield 4L",
+   "relevant": [
+    "0144763",
+    "0144863",
+    "0144869",
+    "0680693",
+    "0144845",
+    "0144829",
+    "0680690",
+    "0144867",
+    "0144748",
+    "0680689",
+    "0144837"
+   ]
+  },
+  {
+   "id": "q03",
+   "kind": "exact",
+   "query": "50mm PVC pressure pipe 3m",
+   "relevant": [
+    "4750154"
+   ],
+   "note": "4770351 is 50mm x 3m DWV (drain) pipe, not pressure pipe, so not relevant."
+  },
+  {
+   "id": "q04",
+   "kind": "spec",
+   "query": "M10 eye bolt galvanised",
+   "relevant": [
+    "0740699",
+    "0740691",
+    "0740715"
+   ]
+  },
+  {
+   "id": "q05",
+   "kind": "spec",
+   "query": "M12 threaded rod 1m",
+   "relevant": [
+    "2410266"
+   ],
+   "note": "No 1m M12 rod exists in the pool. 2410266 (1.2m) is the nearest acceptable substitute."
+  },
+  {
+   "id": "q06",
+   "kind": "spec",
+   "query": "structural plywood 17mm",
+   "relevant": [
+    "0340166",
+    "0030000",
+    "0390072",
+    "0390167",
+    "0390220"
+   ],
+   "note": "F14/F17 formply counts as structural grade. Film faced and non structural ply do not."
+  },
+  {
+   "id": "q07",
+   "kind": "spec",
+   "query": "batten screws 14g x 75mm",
+   "relevant": [
+    "0579092",
+    "0579087",
+    "0890609",
+    "0890592",
+    "1052134",
+    "0579085",
+    "0890596",
+    "0579082"
+   ]
+  },
+  {
+   "id": "q08",
+   "kind": "spec",
+   "query": "hex bolt M8 x 50 zinc",
+   "relevant": [
+    "0168447",
+    "0605816",
+    "2320078"
+   ],
+   "note": "Hot dip galvanised M8x50 bolts are not zinc, so not relevant."
+  },
+  {
+   "id": "q09",
+   "kind": "vague",
+   "query": "flat metal plate with holes",
+   "relevant": [
+    "3975882",
+    "3975905",
+    "3975874",
+    "3975832",
+    "3975858",
+    "3975866",
+    "3960602",
+    "3960600",
+    "1076765",
+    "1076773",
+    "1076804",
+    "1076799",
+    "1130533"
+   ],
+   "note": "Perforated flat plates and bolt-hole bracket plates count. Bent brackets and trailer hitch plates do not."
+  },
+  {
+   "id": "q10",
+   "kind": "vague",
+   "query": "bolt threaded both ends",
+   "relevant": [
+    "2310840"
+   ],
+   "note": "The obvious answer (threaded rod / studding) appears in neither arm top 10, so it is outside the pool. Only a hanger bolt is labelled."
+  },
+  {
+   "id": "q11",
+   "kind": "vague",
+   "query": "post anchor for decking",
+   "relevant": [
+    "0502988",
+    "0503062",
+    "0503008",
+    "0503064",
+    "0503002",
+    "0503053",
+    "0503066",
+    "0503060",
+    "0502990",
+    "0503003",
+    "0503010",
+    "0038662",
+    "0049815",
+    "0502991",
+    "0502993"
+   ]
+  },
+  {
+   "id": "q12",
+   "kind": "vague",
+   "query": "bracket to hang a shelf on a wall",
+   "relevant": [
+    "2580154",
+    "0127414",
+    "2580874",
+    "3000245",
+    "3000172",
+    "2583647",
+    "2580146",
+    "2580149",
+    "2580150"
+   ],
+   "note": "Slot and S-track brackets and decorative wall brackets count. Wire shelves and hanging rod brackets do not."
+  },
+  {
+   "id": "q13",
+   "kind": "vague",
+   "query": "concrete crack filler",
+   "relevant": [
+    "0960222",
+    "0960297",
+    "0355650"
+   ],
+   "note": "Asphalt crack filler and interior wall fillers are not relevant."
+  },
+  {
+   "id": "q14",
+   "kind": "brand",
+   "query": "Pryda joist hanger",
+   "relevant": [
+    "0294207",
+    "0294197",
+    "0294200",
+    "0294203",
+    "0294178",
+    "0646801",
+    "0646802",
+    "0294195",
+    "0294175",
+    "0294192",
+    "0294172",
+    "0294186",
+    "1130011",
+    "0294184",
+    "0294181"
+   ]
+  },
+  {
+   "id": "q15",
+   "kind": "brand",
+   "query": "Ryobi 18v drill",
+   "relevant": [
+    "0919300",
+    "0715241",
+    "0539760",
+    "0539759",
+    "0960631",
+    "0488985",
+    "0919292",
+    "0539754"
+   ],
+   "note": "Impact drivers alone are not drills. Kits that contain a drill driver or hammer drill are."
+  },
+  {
+   "id": "q16",
+   "kind": "brand",
+   "query": "Makita impact driver",
+   "relevant": [
+    "1114324",
+    "0713701",
+    "6240335",
+    "0987674",
+    "1110919",
+    "6240412",
+    "8901067",
+    "1192373",
+    "0667786",
+    "0501084",
+    "0066574"
+   ]
+  },
+  {
+   "id": "q17",
+   "kind": "brand",
+   "query": "Selleys No More Gaps",
+   "relevant": [
+    "1230089",
+    "1230161",
+    "1232399",
+    "1230010",
+    "0147102",
+    "1230112",
+    "1232933",
+    "0266917",
+    "1230158",
+    "0281572",
+    "1232886",
+    "1232909",
+    "1232894"
+   ]
+  },
+  {
+   "id": "q18",
+   "kind": "small",
+   "query": "nyloc nut M10",
+   "relevant": [
+    "0125995",
+    "0098465"
+   ]
+  },
+  {
+   "id": "q19",
+   "kind": "small",
+   "query": "washer M12 galvanised",
+   "relevant": [
+    "2442088",
+    "1101092",
+    "0011510",
+    "1101089",
+    "1100182",
+    "1100222",
+    "0011511",
+    "1100183",
+    "1100071",
+    "1100081",
+    "1101042"
+   ]
+  },
+  {
+   "id": "q20",
+   "kind": "small",
+   "query": "self drilling screw 12g x 20mm",
+   "relevant": [
+    "0920222",
+    "0920463",
+    "0920312",
+    "0920318",
+    "0920372",
+    "0920480",
+    "0920320",
+    "0920402",
+    "0920346"
+   ],
+   "note": "Items must be 12G x 20mm with a self drilling (TEKS / sheet metal) point."
+  }
+ ]
 }
