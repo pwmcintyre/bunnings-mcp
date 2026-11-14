@@ -33,24 +33,24 @@ test("get_product by url", async () => {
 });
 
 test("check_stock with nearby fallback", async () => {
-  const { data } = await call("check_stock", { item_numbers: ["8032174"], store: "Eltham", nearby_stores: 2 });
+  const { data } = await call("check_stock", { item_numbers: ["8032174"], store: "Dandenong", nearby_stores: 2 });
   assert.equal(data.items[0].status, "out_of_stock");
   assert.equal(data.items[0].aisle, "unknown");
-  assert.deepEqual(data.items[0].elsewhere.map((x: any) => x.storeId), ["6390", "6400"]);
+  assert.deepEqual(data.items[0].elsewhere.map((x: any) => x.storeId), ["6222", "6400"]);
   assert.equal(data.items[0].elsewhere[1].aisle, "403");
 });
 
 test("find_stores", async () => {
   const { data } = await call("find_stores", { query: "joondalup" });
   assert.equal(data[0].id, "2010");
-  const near = await call("find_stores", { lat: -37.7, lon: 145.1, limit: 1 });
-  assert.equal(near.data[0].name, "Eltham");
+  const near = await call("find_stores", { lat: -37.99, lon: 145.2, limit: 1 });
+  assert.equal(near.data[0].name, "Dandenong");
 });
 
 test("set_store and get_store", async () => {
   assert.equal((await call("get_store")).data.id, "6400");
-  assert.equal((await call("set_store", { store: "Eltham" })).data.id, "6037");
-  assert.equal((await call("get_store")).data.id, "6037");
+  assert.equal((await call("set_store", { store: "Dandenong" })).data.id, "6111");
+  assert.equal((await call("get_store")).data.id, "6111");
   const bad = await call("set_store", { store: "Atlantis" });
   assert.ok(bad.isError);
   assert.match(bad.data, /No store matches/);

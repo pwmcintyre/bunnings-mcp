@@ -9,9 +9,9 @@ test("distance is sane", () => {
 });
 
 test("find by id, name, suburb, postcode and state", () => {
-  assert.equal(findStores(STORES, { query: "6390" })[0].name, "Thomastown");
+  assert.equal(findStores(STORES, { query: "6222" })[0].name, "Springvale");
   assert.equal(findStores(STORES, { query: "mentone" })[0].id, "6400");
-  assert.equal(findStores(STORES, { query: "3095" })[0].name, "Eltham");
+  assert.equal(findStores(STORES, { query: "3175" })[0].name, "Dandenong");
   assert.deepEqual(findStores(STORES, { query: "wa" }).map((s) => s.name), ["Joondalup"]);
   assert.deepEqual(findStores(STORES, { query: "nowhere" }), []);
 });
@@ -22,11 +22,11 @@ test("exact name outranks partial match", () => {
 });
 
 test("lat/lon sorts by distance and reports it", () => {
-  const r = findStores(STORES, { lat: -37.7, lon: 145.1, limit: 3 });
-  assert.deepEqual(r.map((s) => s.name), ["Eltham", "Thomastown", "Mentone"]);
+  const r = findStores(STORES, { lat: -37.99, lon: 145.2, limit: 3 });
+  assert.deepEqual(r.map((s) => s.name), ["Dandenong", "Springvale", "Mentone"]);
   assert.ok(r[0].distanceKm! < r[1].distanceKm!);
   const near = findStores(STORES, { query: "vic", lat: -31.7, lon: 115.8, limit: 5 });
-  assert.equal(near[0].name, "Thomastown", "nearest Victorian store to Perth");
+  assert.equal(near[0].name, "Mentone", "nearest Victorian store to Perth");
   assert.ok(near.every((s) => s.state === "VIC"), "query filters");
 });
 

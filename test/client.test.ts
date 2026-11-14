@@ -47,7 +47,7 @@ test("caches pages per store and path; throttles between requests", async () => 
   await client.getProduct("8032174");
   await client.getProduct("8032174");
   assert.equal(calls.length, 1, "second call served from cache");
-  await client.getProduct("8032174", { store: "6390" });
+  await client.getProduct("8032174", { store: "6222" });
   assert.equal(calls.length, 2, "another store is another cache key");
   assert.equal(sleeps.length, 1, "second real request waited for the delay");
   assert.ok(sleeps[0] > 0 && sleeps[0] <= 500);
@@ -113,11 +113,11 @@ test("check_stock sorts by aisle, marks unknown, and tolerates a missing item", 
 });
 
 test("check_stock nearby fallback stops at the first store with stock", async () => {
-  const { client, calls } = make((u, s) => productFor(s, s === "6390" ? { stock: 9, aisle: "12", bay: "2" } : { stock: 0 }), { store: "6400" });
+  const { client, calls } = make((u, s) => productFor(s, s === "6111" ? { stock: 9, aisle: "12", bay: "2" } : { stock: 0 }), { store: "6400" });
   const r = await client.checkStock(["8032174"], { nearby: 3 });
   const e = r.rows[0].elsewhere!;
   assert.equal(r.rows[0].stock.status, "out_of_stock");
-  assert.deepEqual(e.map((x) => [x.storeId, x.status]), [["6037", "out_of_stock"], ["6390", "in_stock"]]);
+  assert.deepEqual(e.map((x) => [x.storeId, x.status]), [["6222", "out_of_stock"], ["6111", "in_stock"]]);
   assert.equal(e[1].aisle, "12");
   assert.ok(e[0].distanceKm! <= e[1].distanceKm!, "nearest first");
   assert.equal(calls.length, 3, "stopped before the third neighbour");

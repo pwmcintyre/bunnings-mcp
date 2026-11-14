@@ -10,8 +10,8 @@ export const store = (id: string, name: string, lat: number, lon: number, extra:
 });
 export const STORES: Store[] = [
   store("6400", "Mentone", -37.9768, 145.0695, { postcode: "3194" }),
-  store("6390", "Thomastown", -37.6932, 145.023, { postcode: "3074" }),
-  store("6037", "Eltham", -37.71, 145.14, { postcode: "3095" }),
+  store("6222", "Springvale", -37.95, 145.15, { postcode: "3171" }),
+  store("6111", "Dandenong", -37.99, 145.21, { postcode: "3175" }),
   store("2010", "Joondalup", -31.74, 115.77, { state: "WA", postcode: "6027", region: "WAMetro" }),
 ];
 
