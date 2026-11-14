@@ -15,7 +15,8 @@
     "refresh:fixtures": "tsx scripts/refresh-fixtures.ts",
     "build:stores": "tsx scripts/build-stores.ts",
     "eval:site": "tsx eval/run-site.ts",
-    "eval": "tsx eval/score.ts"
+    "eval": "tsx eval/score.ts",
+    "find:store": "tsx scripts/find-store.ts"
   },
   "dependencies": {
     "@modelcontextprotocol/sdk": "^1.32.2",
