@@ -157,7 +157,7 @@ export class Bunnings {
         p = await this.getProduct(item, { store: store.id });
       } catch (e) {
         // A missing item is a row, not a failed batch. Drift and blocking still fail loudly.
-        if (e instanceof HttpError && !(e instanceof BlockedError)) {
+        if (e instanceof HttpError && e.status === 404 && !(e instanceof BlockedError)) {
           rows.push({ itemNumber: item, name: null, price: null, stock: { storeId: store.id, storeName: store.name, status: "unknown", quantity: null, stockText: null, locations: [] }, aisle: null, bay: null, note: `not found (${e.message})` });
           continue;
         }
@@ -171,7 +171,7 @@ export class Bunnings {
           if (n.id !== store.id) {
             try { st = (await this.getProduct(p.itemNumber, { store: n.id })).stock; }
             catch (e) {
-              if (!(e instanceof HttpError) || e instanceof BlockedError) throw e;
+              if (!(e instanceof HttpError) || e.status !== 404 || e instanceof BlockedError) throw e;
               st = { storeId: n.id, storeName: n.name, status: "unknown", quantity: null, stockText: null, locations: [] };
               note = `not found (${e.message})`;
             }

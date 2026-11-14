@@ -112,6 +112,19 @@ test("check_stock sorts by aisle, marks unknown, and tolerates a missing item", 
   assert.equal(r.rows[3].stock.status, "unknown");
 });
 
+test("check_stock only treats 404 as a missing item", async () => {
+  const { client } = make(() => new Response("upstream failure", { status: 500 }));
+  await assert.rejects(client.checkStock(["1000001"]), (e: unknown) => e instanceof HttpError && e.status === 500);
+});
+
+test("check_stock fan out propagates non-404 HTTP errors", async () => {
+  const client = new Bunnings({
+    stores: STORES, session: new Session(STORES, "6222,6400"), delayMs: 0,
+    fetch: stubFetch((_u, s) => s === "6222" ? productFor(s, { stock: 1 }, "8032174") : new Response("upstream failure", { status: 500 })),
+  });
+  await assert.rejects(client.checkStock(["8032174"]), (e: unknown) => e instanceof HttpError && e.status === 500);
+});
+
 test("search returns the full fixture page with counts, and limit trims it", async () => {
   const { client } = make((u, s) => searchFor(s));
   const r: any = await client.search("treated pine");
