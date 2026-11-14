@@ -62,7 +62,7 @@ export class Bunnings {
   private delayMs: number;
   private now: () => number;
   private sleep: (ms: number) => Promise<void>;
-  private last = 0;
+  private last = -Infinity;
   private chain: Promise<unknown> = Promise.resolve();
 
   constructor(private o: ClientOptions) {

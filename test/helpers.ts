@@ -24,6 +24,7 @@ export function productFor(storeId: string, s: Stock, itemNumber?: string) {
   f.queryKey[2] = storeId;
   f.state.data.inStorePickUpData.stock = s.stock;
   f.state.data.inStorePickUpData.inStoreItemLocation = s.aisle ? [{ aisle: `Aisle ${s.aisle}`, bay: `Bay ${s.bay ?? "1"}` }] : [];
+  qs.find((q: any) => q.queryKey[0] === "product-aisle-item-location").state.data = [{ inStoreLocations: s.aisle ? [{ aisle: s.aisle, bay: s.bay ?? "1" }] : [] }];
   if (itemNumber) qs.find((q: any) => q.queryKey[0] === "retail-product").state.data.itemNumber = itemNumber;
   return nd;
 }

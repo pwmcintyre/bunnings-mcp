@@ -2,6 +2,7 @@
 // Thin MCP adapter: maps each tool to the Bunnings client. No site knowledge lives here.
 import { McpServer } from "@modelcontextprotocol/sdk/server/mcp.js";
 import { StdioServerTransport } from "@modelcontextprotocol/sdk/server/stdio.js";
+import { pathToFileURL } from "node:url";
 import { z } from "zod";
 import { Bunnings } from "./client.ts";
 import { Session } from "./session.ts";
@@ -58,7 +59,7 @@ export function buildServer(bunnings: Bunnings, session: Session): McpServer {
   return server;
 }
 
-if (import.meta.url === `file://${process.argv[1]}` || process.argv[1]?.endsWith("server.ts")) {
+if (process.argv[1] && import.meta.url === pathToFileURL(process.argv[1]).href) {
   const stores = loadStores();
   const session = new Session(stores);
   await buildServer(new Bunnings({ stores, session }), session).connect(new StdioServerTransport());
