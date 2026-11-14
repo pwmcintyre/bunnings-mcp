@@ -39,7 +39,7 @@ An agent follows these steps:
 ### Manual install
 
 ```sh
-git clone https://github.com/pwmcintyre/bunnings-mcp bunnings-mcp
+git clone <this repo> bunnings-mcp
 cd bunnings-mcp
 npm install
 ```
