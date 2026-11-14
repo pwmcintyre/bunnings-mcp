@@ -42,7 +42,7 @@ These are the only places that depend on the website's current shape. If one cha
 - The `storeId` and `regionCode` cookies. Product pages need both. Search works with `storeId` alone but the client sends both everywhere. The client checks the store id the page reports and fails if the cookie was ignored.
 - `/_p{itemNumber}` redirecting to the canonical product page, and `/stores.xml` listing store pages.
 
-The token-gated `apis.prod.bunnings.com.au` endpoints are not used. See [ADR 0001](adr/0001-read-server-rendered-page-data.md).
+The token-gated `apis.prod.bunnings.com.au` endpoints are not used. See [ADR 0001][1].
 
 ## Failure behaviour
 
@@ -56,10 +56,14 @@ The token-gated `apis.prod.bunnings.com.au` endpoints are not used. See [ADR 000
 - Dependency rule (Martin, *Clean Architecture*, scaled down): parsers and domain types are pure functions over JSON and depend on nothing. The client depends on them, never the reverse. There are no single-implementation interfaces and no DI framework. `fetch` and the clock are plain constructor options so tests can stub them.
 - Tracer bullet (Hunt and Thomas, *The Pragmatic Programmer*): `get_product` was built first, end to end over stdio, then the other tools were added around it.
 - Fail loudly and politely (Nygard, *Release It!*): timeouts on every call, one request in flight with a delay, a short cache, no retries, and a named error when the page shape drifts.
-- Evals over vibes (Huyen, *AI Engineering*): the choice of search source is measured, see [the search benchmark](eval/search-benchmark.md).
+- Evals over vibes (Huyen, *AI Engineering*): the choice of search source is measured, see [the search benchmark][2].
 
 ## Known issues
 
-- Bay numbers can differ between `product-fulfilment` and `product-aisle-item-location` for the same item and store, with the same aisle. The server reports the fulfilment value because it is the one the product page displays. Examples are in [the benchmark notes](eval/search-benchmark.md#known-issue-bay-mismatch).
+- Bay numbers can differ between `product-fulfilment` and `product-aisle-item-location` for the same item and store, with the same aisle. The server reports the fulfilment value because it is the one the product page displays. Examples are in [the benchmark notes][3].
 - Search results carry no stock, so `in_stock_only` costs one product page per candidate.
 - Each product page is about 700 KB. A 30 item `check_stock` takes about 30 seconds.
+
+[1]: adr/0001-read-server-rendered-page-data.md
+[2]: eval/search-benchmark.md
+[3]: eval/search-benchmark.md#known-issue-bay-mismatch

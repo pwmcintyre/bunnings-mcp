@@ -15,7 +15,7 @@ A weekly workflow and `npm run test:live` run a search, a product page and a sto
 
 1. Run `npm run refresh:fixtures`. It makes four requests and rewrites `test/fixtures/search.json`, `product.json` and `store.json`, trimmed to the fields the parsers read.
 2. Run `npm test`. The failing parser test shows what moved.
-3. Update the path in `src/parse.ts` and the list in [docs/architecture.md](docs/architecture.md#the-fragile-surface).
+3. Update the path in `src/parse.ts` and the list in [docs/architecture.md][1].
 4. Run `npm run test:live` to confirm.
 
 The fixtures contain only public product and store data. Do not add cookies, tokens or the site's runtime config to them.
@@ -34,3 +34,5 @@ The fixtures contain only public product and store data. Do not add cookies, tok
 ## Style
 
 Prose is one paragraph per line, present tense. Commits follow Conventional Commits.
+
+[1]: docs/architecture.md#the-fragile-surface

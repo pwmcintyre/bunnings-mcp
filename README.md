@@ -1,6 +1,6 @@
 # bunnings-mcp
 
-An unofficial, read-only [MCP](https://modelcontextprotocol.io) server for the Australian Bunnings Warehouse website (bunnings.com.au). It lets an AI assistant check a product from a pasted URL, look up price, aisle and bay at a store, check stock across a shopping list, and search for substitutes.
+An unofficial, read-only [MCP][1] server for the Australian Bunnings Warehouse website (bunnings.com.au). It lets an AI assistant check a product from a pasted URL, look up price, aisle and bay at a store, check stock across a shopping list, and search for substitutes.
 
 This project is not affiliated with, endorsed by or connected to Bunnings Group Limited. It reads the public pages of the website anonymously, the same pages a browser sees. It does not log in, add to a trolley or place orders. The website can change at any time and break it. Prices and stock are whatever the website shows and can be out of date by the time you drive to the store.
 
@@ -39,7 +39,7 @@ An agent follows these steps:
 ### Manual install
 
 ```sh
-git clone <this repo> bunnings-mcp
+git clone https://github.com/pwmcintyre/bunnings-mcp.git
 cd bunnings-mcp
 npm install
 ```
@@ -100,8 +100,13 @@ npm run refresh:fixtures
 npm run eval           # scores the search benchmark
 ```
 
-See [docs/architecture.md](docs/architecture.md) for how it works, [docs/eval/search-benchmark.md](docs/eval/search-benchmark.md) for the search comparison, and [CONTRIBUTING.md](CONTRIBUTING.md) for refreshing fixtures when the site changes.
+See [docs/architecture.md][2] for how it works, [docs/eval/search-benchmark.md][3] for the search comparison, and [CONTRIBUTING.md][4] for refreshing fixtures when the site changes.
 
 ## Behaving politely
 
 One request at a time, at least 500 ms apart, a 20 second timeout, a five minute in-memory cache, and no retries. If the site starts refusing requests (HTTP 403, 429 or 503) the tool reports it and stops. Do not point it at bulk jobs.
+
+[1]: https://modelcontextprotocol.io
+[2]: docs/architecture.md
+[3]: docs/eval/search-benchmark.md
+[4]: CONTRIBUTING.md

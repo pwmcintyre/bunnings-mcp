@@ -4,7 +4,7 @@ Status: proposed. The owner decides.
 
 ## Context
 
-`search_products` needs a source of candidate products. Two are available: the site's own search (the `coveo-search` data on `/search/products`) and a web search restricted to `site:bunnings.com.au`. The [search benchmark](../eval/search-benchmark.md) compared them on 20 queries.
+`search_products` needs a source of candidate products. Two are available: the site's own search (the `coveo-search` data on `/search/products`) and a web search restricted to `site:bunnings.com.au`. The [search benchmark][1] compared them on 20 queries.
 
 ## Evidence
 
@@ -27,3 +27,5 @@ Option 3. Keep `search_products` on site search. Put the vocabulary advice in th
 - No search dependency or key inside the server.
 - Weak queries still need a second attempt by the assistant.
 - The benchmark should be rerun when the site changes its search.
+
+[1]: ../eval/search-benchmark.md
