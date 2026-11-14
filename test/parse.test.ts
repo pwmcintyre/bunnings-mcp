@@ -53,6 +53,15 @@ test("parseProduct reports unknown stock, never guesses", () => {
   assert.equal(parseProduct(nd).clickAndCollect, null);
 });
 
+test("an item the store does not range is not_sold, not unknown", () => {
+  const nd = clone(fixture("product"));
+  const f = nd.props.pageProps.dehydratedState.queries.find((q: any) => q.queryKey[0] === "product-fulfilment");
+  f.state.data.inStorePickUpData = { inStorePickUpAvailable: false, inStoreStockColor: "RED", inStoreStockMsg: "notSoldAtThisStore" };
+  const p = parseProduct(nd);
+  assert.equal(p.stock.status, "not_sold");
+  assert.equal(p.stock.stockText, "notSoldAtThisStore");
+});
+
 test("zero stock is out_of_stock; aisle query is the fallback when fulfilment has no location", () => {
   const nd = clone(fixture("product"));
   const qs = nd.props.pageProps.dehydratedState.queries;

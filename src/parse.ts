@@ -46,7 +46,7 @@ export interface Search {
   results: SearchResult[];
 }
 
-export type StockStatus = "in_stock" | "out_of_stock" | "unknown";
+export type StockStatus = "in_stock" | "out_of_stock" | "not_sold" | "unknown";
 
 export interface Stock {
   storeId: string;
@@ -156,9 +156,10 @@ export function parseStock(fulfilment: Json | undefined, aisle: Json | undefined
   return {
     storeId,
     storeName: str(pick?.storeName) ?? str(fulfilment.clickNCollectData?.storeName),
-    status: quantity == null ? "unknown" : quantity > 0 ? "in_stock" : "out_of_stock",
+    // The site says "notSoldAtThisStore" when the item is not ranged at the store; there is no stock number then.
+    status: quantity != null ? (quantity > 0 ? "in_stock" : "out_of_stock") : pick?.inStoreStockMsg === "notSoldAtThisStore" ? "not_sold" : "unknown",
     quantity,
-    stockText: str(pick?.inStoreStockTxt),
+    stockText: str(pick?.inStoreStockTxt) ?? str(pick?.inStoreStockMsg),
     locations: [...new Map(locs.map((l) => [`${l.aisle}/${l.bay}`, { aisle: stripPrefix(l.aisle, "aisle"), bay: stripPrefix(l.bay, "bay") }])).values()],
   };
 }
