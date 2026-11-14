@@ -1,0 +1,102 @@
+{
+ "props": {
+  "pageProps": {
+   "dehydratedState": {
+    "queries": [
+     {
+      "queryKey": [
+       "server-prefetch",
+       "coveo-search",
+       "/search/products?q=treated+pine+90x45",
+       "VICMetro",
+       "6400",
+       {
+        "body": {
+         "q": "treated pine 90x45",
+         "firstResult": 0,
+         "numberOfResults": 36
+        }
+       }
+      ],
+      "state": {
+       "data": {
+        "totalCount": 24,
+        "results": [
+         {
+          "raw": {
+           "code": "8032174",
+           "name": "90 x 45mm Outdoor Framing H3 Treated Pine - 3.0m",
+           "price": 23.13,
+           "cprice": 7.71,
+           "comparisonunitofmeasure": "linear metre",
+           "productroutingurl": "/90-x-45mm-outdoor-framing-h3-treated-pine-3-0m_p8032174",
+           "rating": 3.73,
+           "ratingcount": 43
+          }
+         },
+         {
+          "raw": {
+           "code": "8031024",
+           "name": "90 x 45mm Framing MGP10 H2 Blue Pine 3.0m",
+           "price": 17.46,
+           "cprice": 5.82,
+           "comparisonunitofmeasure": "linear metre",
+           "productroutingurl": "/90-x-45mm-framing-mgp10-h2-blue-pine-3-0m_p8031024",
+           "rating": 3.8,
+           "ratingcount": 5
+          }
+         },
+         {
+          "raw": {
+           "code": "0616147",
+           "name": "90 x 45mm 4.8m MGP10 H4 Treated Outdoor Structural Radiata Pine",
+           "price": 78.7,
+           "productroutingurl": "/90-x-45mm-4-8m-mgp10-h4-treated-outdoor-structural-radiata-pine_p0616147",
+           "rating": 4,
+           "ratingcount": 2,
+           "brandname": "Woodhouse TerraFrame"
+          }
+         },
+         {
+          "raw": {
+           "code": "0616143",
+           "name": "90 x 45mm 3.9m MGP10 H4 Treated Outdoor Structural Radiata Pine",
+           "price": 62.5,
+           "productroutingurl": "/90-x-45mm-3-9m-mgp10-h4-treated-outdoor-structural-radiata-pine_p0616143",
+           "rating": 4,
+           "ratingcount": 1,
+           "brandname": "Woodhouse TerraFrame"
+          }
+         },
+         {
+          "raw": {
+           "code": "0120338",
+           "name": "90 x 45mm 5.4m Fence Capping H3 Treated Pine Rebated KD",
+           "price": 41.56,
+           "cprice": 7.7,
+           "comparisonunitofmeasure": "linear metre",
+           "productroutingurl": "/90-x-45mm-5-4m-fence-capping-h3-treated-pine-rebated-kd_p0120338",
+           "rating": 3.67,
+           "ratingcount": 3,
+           "brandname": "STS Timber Wholesale P/L"
+          }
+         },
+         {
+          "raw": {
+           "code": "0947739",
+           "name": "Ecowood Treated Pine Post H4 100 x 100mm 2.7M",
+           "price": 36,
+           "productroutingurl": "/ecowood-treated-pine-post-h4-100-x-100mm-2-7m_p0947739",
+           "rating": 0,
+           "ratingcount": 0
+          }
+         }
+        ]
+       }
+      }
+     }
+    ]
+   }
+  }
+ }
+}

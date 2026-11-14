@@ -1,0 +1,267 @@
+{
+ "props": {
+  "pageProps": {
+   "dehydratedState": {
+    "queries": [
+     {
+      "queryKey": [
+       "product-retail-price",
+       "8032174",
+       "6400"
+      ],
+      "state": {
+       "data": {
+        "comparisonUnit": 3,
+        "comparisonUnitOfMeasure": "linear metre",
+        "comparisonUnitOfMeasureCode": "MTR",
+        "comparisonUnitPrice": 7.71,
+        "currencyIso": "AUD",
+        "formattedValue": "$23.13",
+        "hasMultipleOffers": false,
+        "priceAvailable": true,
+        "priceType": "FROM",
+        "value": 23.13
+       },
+       "dataUpdateCount": 1,
+       "dataUpdatedAt": 1794623252253,
+       "error": null,
+       "errorUpdateCount": 0,
+       "errorUpdatedAt": 0,
+       "fetchFailureCount": 0,
+       "fetchFailureReason": null,
+       "fetchMeta": null,
+       "isInvalidated": false,
+       "status": "success",
+       "fetchStatus": "idle"
+      }
+     },
+     {
+      "queryKey": [
+       "product-fulfilment",
+       "8032174",
+       "6400",
+       {
+        "body": {
+         "includeVariantStock": true,
+         "locationCode": "6400",
+         "storeRadius": "100000"
+        }
+       }
+      ],
+      "state": {
+       "data": {
+        "addToCartEnabled": true,
+        "availableInStore": false,
+        "disableStockVisibility": false,
+        "isActive": true,
+        "poa": false,
+        "clickNCollectData": {
+         "clickNCollectStockColor": "GREEN",
+         "clickNCollectStockMsg": "itemsAvailableInStock",
+         "clickNCollectStockTxt": "inStock",
+         "hasClickAndCollect": true,
+         "hasDriveAndCollect": false,
+         "isClicknCollectAvailable": false,
+         "sku": "8032174",
+         "stock": 96,
+         "storeName": "Mentone Warehouse"
+        },
+        "deliveryData": {
+         "deliveryEstimatorMsg": "defaultDeliveryMessage",
+         "deliveryPolicy": false,
+         "isDeliveryAvailable": true,
+         "returnPolicy": false
+        },
+        "driveNCollect": "NOT_AVAILABLE",
+        "inStorePickUpData": {
+         "inStoreFindInStoreTxt": "findInStore",
+         "inStoreItemLocation": [
+          {
+           "aisle": "Aisle 403",
+           "bay": "Bay 3"
+          }
+         ],
+         "inStoreMaxAisleNumber": "88",
+         "inStorePickUpAvailable": true,
+         "inStoreStockColor": "GREEN",
+         "inStoreStockMsg": "itemsAvailableInStock",
+         "inStoreStockTxt": "inStock",
+         "sku": "8032174",
+         "stock": 96,
+         "storeMapUrl": "http://map-viewer.apps.bunnings.com.au/api/6400/map-6400.pdf",
+         "storeName": "Mentone"
+        },
+        "isDeliveryIncluded": false,
+        "isMarketLink": false,
+        "isSpecialProduct": false,
+        "tradeRestricted": false,
+        "variantStockDetails": [
+         {
+          "productCode": "8032172",
+          "stockStatus": "inStock"
+         },
+         {
+          "productCode": "8032174",
+          "stockStatus": "inStock"
+         },
+         {
+          "productCode": "8032176",
+          "stockStatus": "inStock"
+         },
+         {
+          "productCode": "8032178",
+          "stockStatus": "outOfStock"
+         },
+         {
+          "productCode": "8032180",
+          "stockStatus": "inStock"
+         },
+         {
+          "productCode": "8032182",
+          "stockStatus": "inStock"
+         },
+         {
+          "productCode": "8032184",
+          "stockStatus": "inStock"
+         }
+        ]
+       },
+       "dataUpdateCount": 1,
+       "dataUpdatedAt": 1794623252290,
+       "error": null,
+       "errorUpdateCount": 0,
+       "errorUpdatedAt": 0,
+       "fetchFailureCount": 0,
+       "fetchFailureReason": null,
+       "fetchMeta": null,
+       "isInvalidated": false,
+       "status": "success",
+       "fetchStatus": "idle"
+      }
+     },
+     {
+      "queryKey": [
+       "product-aisle-item-location",
+       "8032174",
+       "6400"
+      ],
+      "state": {
+       "data": [
+        {
+         "inStoreLocations": [
+          {
+           "aisle": "403",
+           "bay": "3",
+           "sequence": "5"
+          },
+          {
+           "aisle": "403",
+           "bay": "3",
+           "sequence": "7"
+          }
+         ]
+        }
+       ],
+       "dataUpdateCount": 1,
+       "dataUpdatedAt": 1794623252359,
+       "error": null,
+       "errorUpdateCount": 0,
+       "errorUpdatedAt": 0,
+       "fetchFailureCount": 0,
+       "fetchFailureReason": null,
+       "fetchMeta": null,
+       "isInvalidated": false,
+       "status": "success",
+       "fetchStatus": "idle"
+      }
+     },
+     {
+      "queryKey": [
+       "retail-product",
+       "8032174",
+       "6400"
+      ],
+      "state": {
+       "data": {
+        "itemNumber": "8032174",
+        "name": "90 x 45mm Outdoor Framing H3 Treated Pine - 3.0m",
+        "averageRating": 3.72,
+        "numberOfReviews": 43,
+        "summary": "",
+        "classifications": [
+         {
+          "code": "timber-various",
+          "features": [
+           {
+            "code": "colour",
+            "comparable": false,
+            "featureValues": [
+             {
+              "value": "Other"
+             }
+            ],
+            "name": "Colour",
+            "range": false
+           },
+           {
+            "code": "material",
+            "comparable": false,
+            "featureValues": [
+             {
+              "value": "H3 Treated Pine Outdoor Timber Framing MGP 10"
+             }
+            ],
+            "name": "Material",
+            "range": false
+           },
+           {
+            "code": "size",
+            "comparable": false,
+            "featureValues": [
+             {
+              "value": "3.0m"
+             }
+            ],
+            "name": "Size",
+            "range": false
+           },
+           {
+            "code": "common_uses",
+            "comparable": true,
+            "featureValues": [
+             {
+              "value": "Outdoor Timber Framing"
+             }
+            ],
+            "name": "Common Uses",
+            "range": false
+           },
+           {
+            "code": "timber_species",
+            "comparable": true,
+            "featureValues": [
+             {
+              "value": "Pine"
+             }
+            ],
+            "name": "Timber Species",
+            "range": false
+           }
+          ],
+          "name": "TIMBER VARIOUS"
+         }
+        ],
+        "images": [
+         {
+          "imageType": "PRIMARY",
+          "url": "https://media.bunnings.com.au/api/public/content/e16396f6883d40a6948aa6930c619f59?v=38c65ef3"
+         }
+        ]
+       }
+      }
+     }
+    ]
+   }
+  }
+ }
+}

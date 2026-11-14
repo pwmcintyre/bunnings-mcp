@@ -1,0 +1,175 @@
+// The one module that knows how bunnings.com.au works: URLs, cookies, politeness, page shapes.
+// Small interface out (search, getProduct, checkStock, stores); everything fragile stays in here and parse.ts.
+import { TtlCache } from "./cache.ts";
+import { ORIGIN, extractNextData, parseProduct, parseSearch, type Product, type Search, type Store, type Stock } from "./parse.ts";
+import type { Session } from "./session.ts";
+import { findStores, nearestStores, type FindOptions, type StoreMatch } from "./stores.ts";
+
+const UA = "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/130.0 Safari/537.36";
+
+export class HttpError extends Error {
+  constructor(public status: number, url: string) { super(`HTTP ${status} from ${url}`); this.name = "HttpError"; }
+}
+/** Cloudflare (or the site) pushed back. Never retried: stop and tell the user. */
+export class BlockedError extends HttpError {
+  constructor(status: number, url: string) {
+    super(status, url);
+    this.name = "BlockedError";
+    this.message += ". The site is blocking automated requests right now; wait a while before trying again.";
+  }
+}
+
+export interface ClientOptions {
+  stores: Store[];
+  session: Session;
+  fetch?: typeof fetch;
+  delayMs?: number;
+  ttlMs?: number;
+  timeoutMs?: number;
+  now?: () => number;
+  sleep?: (ms: number) => Promise<void>;
+}
+
+export interface ProductRef { itemNumber: string; path: string }
+
+export function parseProductRef(input: string): ProductRef {
+  const s = input.trim();
+  if (/^\d{5,9}$/.test(s)) return { itemNumber: s, path: `/_p${s}` };
+  const href = s.startsWith("/") ? ORIGIN + s : /^https?:\/\//.test(s) ? s : `https://${s}`;
+  let u: URL;
+  try { u = new URL(href); } catch { throw new Error(`Not a Bunnings product URL or item number: "${input}"`); }
+  const m = u.pathname.match(/_p(\d{5,9})$/);
+  if (!/(^|\.)bunnings\.com\.au$/.test(u.hostname) || !m) throw new Error(`Not a Bunnings product URL or item number: "${input}"`);
+  return { itemNumber: m[1], path: u.pathname };
+}
+
+export interface StockRow {
+  itemNumber: string;
+  name: string | null;
+  price: number | null;
+  stock: Stock;
+  aisle: string | null;
+  bay: string | null;
+  note?: string;
+  elsewhere?: { store: string; storeId: string; distanceKm?: number; status: Stock["status"]; quantity: number | null; aisle: string | null; bay: string | null }[];
+}
+
+const aisleOf = (s: Stock) => ({ aisle: s.locations[0]?.aisle ?? null, bay: s.locations[0]?.bay ?? null });
+
+export class Bunnings {
+  private f: typeof fetch;
+  private cache: TtlCache<{ nd: any; url: string }>;
+  private delayMs: number;
+  private now: () => number;
+  private sleep: (ms: number) => Promise<void>;
+  private last = 0;
+  private chain: Promise<unknown> = Promise.resolve();
+
+  constructor(private o: ClientOptions) {
+    this.f = o.fetch ?? fetch;
+    this.now = o.now ?? Date.now;
+    this.sleep = o.sleep ?? ((ms) => new Promise((r) => setTimeout(r, ms)));
+    this.delayMs = o.delayMs ?? 500;
+    this.cache = new TtlCache(o.ttlMs ?? 5 * 60_000, this.now);
+  }
+
+  readonly stores = {
+    find: (opts: FindOptions): StoreMatch[] => findStores(this.o.stores, opts),
+    resolve: (q: string): Store => this.o.session.resolve(q),
+  };
+
+  /** One request in flight, at least delayMs between requests. */
+  private throttled<T>(fn: () => Promise<T>): Promise<T> {
+    const run = async () => {
+      const wait = this.last + this.delayMs - this.now();
+      if (wait > 0) await this.sleep(wait);
+      try { return await fn(); } finally { this.last = this.now(); }
+    };
+    const p = this.chain.then(run, run);
+    this.chain = p.catch(() => {});
+    return p;
+  }
+
+  private async page(path: string, store: Store): Promise<{ nd: any; url: string }> {
+    const key = `${store.id}${path}`;
+    const hit = this.cache.get(key);
+    if (hit) return hit;
+    const url = ORIGIN + path;
+    const out = await this.throttled(async () => {
+      const res = await this.f(url, {
+        headers: { "user-agent": UA, "accept-language": "en-AU", cookie: `storeId=${store.id}; regionCode=${store.region}` },
+        signal: AbortSignal.timeout(this.o.timeoutMs ?? 20_000),
+      });
+      if (res.status === 403 || res.status === 429 || res.status === 503) throw new BlockedError(res.status, url);
+      if (!res.ok) throw new HttpError(res.status, url);
+      return { nd: extractNextData(await res.text()), url: res.url || url };
+    });
+    this.cache.set(key, out);
+    return out;
+  }
+
+  async search(query: string, opts: { store?: string; limit?: number; page?: number; inStockOnly?: boolean } = {}) {
+    const store = opts.store ? this.stores.resolve(opts.store) : this.o.session.get();
+    const limit = Math.min(Math.max(opts.limit ?? 10, 1), 36);
+    const params = new URLSearchParams({ q: query });
+    if (opts.page && opts.page > 1) params.set("page", String(opts.page));
+    const { nd } = await this.page(`/search/products?${params}`, store);
+    const s: Search = parseSearch(nd);
+    if (s.storeId !== store.id) throw new Error(`Search ran for store ${s.storeId}, not ${store.id}: the store cookie was not honoured. Check regionCode ${store.region}.`);
+    if (!opts.inStockOnly) return { ...s, store: store.name, results: s.results.slice(0, limit) };
+    // Search data carries no stock, so filtering costs one product page per candidate (cached, throttled).
+    const SCAN_CAP = 15;
+    const kept: (Search["results"][number] & { stock: Stock })[] = [];
+    let scanned = 0;
+    for (const r of s.results.slice(0, SCAN_CAP)) {
+      if (kept.length >= limit) break;
+      scanned++;
+      const p = await this.getProduct(r.itemNumber, { store: store.id });
+      if (p.stock.status === "in_stock") kept.push({ ...r, stock: p.stock });
+    }
+    return { ...s, store: store.name, results: kept, scanned, scanCap: SCAN_CAP };
+  }
+
+  async getProduct(input: string, opts: { store?: string } = {}): Promise<Product> {
+    const ref = parseProductRef(input);
+    const store = opts.store ? this.stores.resolve(opts.store) : this.o.session.get();
+    const { nd, url } = await this.page(ref.path, store);
+    const p = parseProduct(nd);
+    if (p.itemNumber !== ref.itemNumber) throw new Error(`Asked for item ${ref.itemNumber} but the page is item ${p.itemNumber}.`);
+    if (p.storeId !== store.id) throw new Error(`Product page ran for store ${p.storeId}, not ${store.id}: the store cookie was not honoured. Check regionCode ${store.region}.`);
+    return { ...p, url };
+  }
+
+  async checkStock(items: string[], opts: { store?: string; nearby?: number } = {}): Promise<{ store: string; storeId: string; rows: StockRow[] }> {
+    const store = opts.store ? this.stores.resolve(opts.store) : this.o.session.get();
+    const nearby = Math.min(opts.nearby ?? 0, 5);
+    const rows: StockRow[] = [];
+    for (const item of items) {
+      let p: Product;
+      try {
+        p = await this.getProduct(item, { store: store.id });
+      } catch (e) {
+        // A missing item is a row, not a failed batch. Drift and blocking still fail loudly.
+        if (e instanceof HttpError && !(e instanceof BlockedError)) {
+          rows.push({ itemNumber: item, name: null, price: null, stock: { storeId: store.id, storeName: store.name, status: "unknown", quantity: null, stockText: null, locations: [] }, aisle: null, bay: null, note: `not found (${e.message})` });
+          continue;
+        }
+        throw e;
+      }
+      const row: StockRow = { itemNumber: p.itemNumber, name: p.name, price: p.price, stock: p.stock, ...aisleOf(p.stock) };
+      if (p.stock.status !== "in_stock" && nearby > 0) {
+        row.elsewhere = [];
+        for (const n of nearestStores(this.o.stores, store, nearby)) {
+          const q = await this.getProduct(p.itemNumber, { store: n.id });
+          row.elsewhere.push({ store: n.name, storeId: n.id, distanceKm: n.distanceKm, status: q.stock.status, quantity: q.stock.quantity, ...aisleOf(q.stock) });
+          if (q.stock.status === "in_stock") break;
+        }
+      }
+      rows.push(row);
+    }
+    // Sort by aisle so the list matches a walk round the store; unknown aisles go last.
+    const key = (r: StockRow) => (r.aisle == null ? Infinity : Number.isNaN(parseInt(r.aisle)) ? 1e6 : parseInt(r.aisle));
+    rows.sort((a, b) => key(a) - key(b) || a.itemNumber.localeCompare(b.itemNumber));
+    return { store: store.name, storeId: store.id, rows };
+  }
+}

@@ -1,0 +1,134 @@
+{
+ "props": {
+  "pageProps": {
+   "initialState": {
+    "store": {
+     "data": {
+      "name": "6400",
+      "displayName": "Mentone",
+      "geoPoint": {
+       "latitude": -37.976809,
+       "longitude": 145.069467
+      },
+      "pricingRegion": "VICMetro",
+      "mapUrl": "http://map-viewer.apps.bunnings.com.au/api/6400/map-6400.pdf",
+      "openingHours": {
+       "code": "6400",
+       "weekDayOpeningList": [
+        {
+         "closingTime": {
+          "formattedHour": "7:00 pm",
+          "hour": 7,
+          "minute": 0
+         },
+         "openingTime": {
+          "formattedHour": "7:00 am",
+          "hour": 7,
+          "minute": 0
+         },
+         "closed": false,
+         "weekDay": "SATURDAY"
+        },
+        {
+         "closingTime": {
+          "formattedHour": "7:00 pm",
+          "hour": 7,
+          "minute": 0
+         },
+         "openingTime": {
+          "formattedHour": "7:00 am",
+          "hour": 7,
+          "minute": 0
+         },
+         "closed": false,
+         "weekDay": "SUNDAY"
+        },
+        {
+         "closingTime": {
+          "formattedHour": "9:00 pm",
+          "hour": 9,
+          "minute": 0
+         },
+         "openingTime": {
+          "formattedHour": "6:00 am",
+          "hour": 6,
+          "minute": 0
+         },
+         "closed": false,
+         "weekDay": "MONDAY"
+        },
+        {
+         "closingTime": {
+          "formattedHour": "9:00 pm",
+          "hour": 9,
+          "minute": 0
+         },
+         "openingTime": {
+          "formattedHour": "6:00 am",
+          "hour": 6,
+          "minute": 0
+         },
+         "closed": false,
+         "weekDay": "TUESDAY"
+        },
+        {
+         "closingTime": {
+          "formattedHour": "9:00 pm",
+          "hour": 9,
+          "minute": 0
+         },
+         "openingTime": {
+          "formattedHour": "6:00 am",
+          "hour": 6,
+          "minute": 0
+         },
+         "closed": false,
+         "weekDay": "WEDNESDAY"
+        },
+        {
+         "closingTime": {
+          "formattedHour": "9:00 pm",
+          "hour": 9,
+          "minute": 0
+         },
+         "openingTime": {
+          "formattedHour": "6:00 am",
+          "hour": 6,
+          "minute": 0
+         },
+         "closed": false,
+         "weekDay": "THURSDAY"
+        },
+        {
+         "closingTime": {
+          "formattedHour": "9:00 pm",
+          "hour": 9,
+          "minute": 0
+         },
+         "openingTime": {
+          "formattedHour": "6:00 am",
+          "hour": 6,
+          "minute": 0
+         },
+         "closed": false,
+         "weekDay": "FRIDAY"
+        }
+       ]
+      },
+      "address": {
+       "line1": "23-27 Nepean Highway",
+       "town": "Mentone",
+       "postalCode": "3194",
+       "phone": "03 9581 7100",
+       "region": {
+        "countryIso": "AU",
+        "isocode": "VIC",
+        "name": "VIC"
+       }
+      }
+     }
+    }
+   }
+  }
+ }
+}
