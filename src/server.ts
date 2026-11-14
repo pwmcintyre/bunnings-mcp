@@ -22,7 +22,7 @@ export function buildServer(bunnings: Bunnings, session: Session): McpServer {
 
   server.registerTool("search_products", {
     description: "Search bunnings.com.au for products at a store. Returns item number, name, price, unit price, url and rating. Stock is not in search data: set in_stock_only to check each candidate's product page (slower, up to 15 requests).",
-    inputSchema: { query: z.string(), store, in_stock_only: z.boolean().optional(), limit: z.number().int().min(1).max(36).optional() },
+    inputSchema: { query: z.string().describe("Use the shop's catalogue words when results look wrong, for example \"nylon lock nut\" or \"TEKS screws\". Web search can find an item number for get_product."), store, in_stock_only: z.boolean().optional(), limit: z.number().int().min(1).max(36).optional() },
   }, guard((a) => bunnings.search(a.query, { store: a.store, inStockOnly: a.in_stock_only, limit: a.limit })));
 
   server.registerTool("get_product", {
