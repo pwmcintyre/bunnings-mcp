@@ -112,15 +112,16 @@ test("check_stock sorts by aisle, marks unknown, and tolerates a missing item", 
   assert.equal(r.rows[3].stock.status, "unknown");
 });
 
-test("check_stock nearby fallback stops at the first store with stock", async () => {
-  const { client, calls } = make((u, s) => productFor(s, s === "6111" ? { stock: 9, aisle: "12", bay: "2" } : { stock: 0 }), { store: "6400" });
-  const r = await client.checkStock(["8032174"], { nearby: 3 });
-  const e = r.rows[0].elsewhere!;
-  assert.equal(r.rows[0].stock.status, "out_of_stock");
-  assert.deepEqual(e.map((x) => [x.storeId, x.status]), [["6222", "out_of_stock"], ["6111", "in_stock"]]);
-  assert.equal(e[1].aisle, "12");
-  assert.ok(e[0].distanceKm! <= e[1].distanceKm!, "nearest first");
-  assert.equal(calls.length, 3, "stopped before the third neighbour");
+test("search returns the full fixture page with counts, and limit trims it", async () => {
+  const { client } = make((u, s) => searchFor(s));
+  const r: any = await client.search("treated pine");
+  assert.equal(r.results.length, 6);
+  assert.equal(r.returned, 6);
+  assert.equal(r.total, 24);
+  assert.equal(r.hasMore, true);
+  assert.equal(r.results[0].brand !== undefined, true);
+  assert.equal("rating" in r.results[0], false);
+  assert.equal(((await client.search("treated pine", { limit: 2 })) as any).returned, 2);
 });
 
 test("check_stock fans out over preferred stores in order, with not_sold and unknown", async () => {

@@ -1,6 +1,6 @@
 import { test } from "node:test";
 import assert from "node:assert/strict";
-import { distanceKm, findStores, loadStores, nearestStores } from "../src/stores.ts";
+import { distanceKm, findStores, loadStores } from "../src/stores.ts";
 import { STORES } from "./helpers.ts";
 
 test("distance is sane", () => {
@@ -32,12 +32,6 @@ test("lat/lon sorts by distance and reports it", () => {
 
 test("needs a query or a point", () => {
   assert.throws(() => findStores(STORES, {}), /query/);
-});
-
-test("nearestStores excludes the base store", () => {
-  const r = nearestStores(STORES, STORES[0], 2);
-  assert.ok(r.every((s) => s.id !== "6400"));
-  assert.equal(r.length, 2);
 });
 
 test("committed data/stores.json covers the country", () => {

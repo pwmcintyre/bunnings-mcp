@@ -35,8 +35,3 @@ export function findStores(stores: Store[], { query, lat, lon, limit = 5 }: Find
   }
   return out.slice(0, limit);
 }
-
-/** Nearest other stores to `base`, closest first. */
-export function nearestStores(stores: Store[], base: Store, n: number): StoreMatch[] {
-  return findStores(stores.filter((s) => s.id !== base.id), { lat: base.lat, lon: base.lon, limit: n }).map((s) => s);
-}

@@ -24,6 +24,8 @@ test("search_products", async () => {
   const { data } = await call("search_products", { query: "treated pine", limit: 3 });
   assert.equal(data.results.length, 3);
   assert.equal(data.results[0].itemNumber, "8032174");
+  const all = (await call("search_products", { query: "treated pine" })).data;
+  assert.deepEqual([all.returned, all.total, all.hasMore], [6, 24, true]);
 });
 
 test("get_product by url", async () => {
@@ -32,12 +34,13 @@ test("get_product by url", async () => {
   assert.equal(data.stock.locations[0].aisle, "403");
 });
 
-test("check_stock with nearby fallback", async () => {
-  const { data } = await call("check_stock", { item_numbers: ["8032174"], store: "Dandenong", nearby_stores: 2 });
+test("check_stock takes an explicit store and has no nearby_stores", async () => {
+  const { tools } = await client.listTools();
+  assert.equal("nearby_stores" in (tools.find((t) => t.name === "check_stock")!.inputSchema.properties as object), false);
+  const { data } = await call("check_stock", { item_numbers: ["8032174"], store: "Dandenong" });
   assert.equal(data.items[0].status, "out_of_stock");
   assert.equal(data.items[0].aisle, "unknown");
-  assert.deepEqual(data.items[0].elsewhere.map((x: any) => x.storeId), ["6222", "6400"]);
-  assert.equal(data.items[0].elsewhere[1].aisle, "403");
+  assert.equal(data.items[0].elsewhere, undefined);
 });
 
 test("find_stores", async () => {

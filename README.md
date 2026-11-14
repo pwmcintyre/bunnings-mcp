@@ -8,9 +8,9 @@ This project is not affiliated with, endorsed by or connected to Bunnings Group 
 
 | tool | what it does |
 |---|---|
-| `search_products` | Site search at a store. Returns item number, name, price, unit price, URL and rating. `in_stock_only` filters by stock using each candidate's product page (up to 15 extra requests). |
+| `search_products` | Site search at a store. Returns a full page (up to 36 rows, one request whatever `limit` is) of item number, name, price, unit price, URL and brand, with `returned`, `total` and `hasMore`; use `page` to continue. `in_stock_only` filters by stock using each candidate's product page (up to 15 extra requests). |
 | `get_product` | Details from a product URL or item number: price, specs, stock quantity, aisle and bay, click and collect and delivery flags. |
-| `check_stock` | Stock and aisle/bay for a list of item numbers, sorted by aisle of the default store. With several preferred stores and no `store` argument, every preferred store is reported per item. Missing data is reported as `unknown`. `nearby_stores` (0 to 5) also checks the closest other stores for items that are not in stock. |
+| `check_stock` | Stock and aisle/bay for a list of item numbers, sorted by aisle. Leave out `store` to check the preferred stores; pass it only for a store the user names. With several preferred stores and no `store` argument, every preferred store is reported per item. Missing data is reported as `unknown`. Statuses apply only to the items checked. |
 | `find_stores` | Finds stores by name, suburb, postcode or state, nearest first when `lat` and `lon` are given. Backed by `data/stores.json` (every Australian store). |
 | `set_store` / `get_store` | Sets and reads the default store for the life of the server process. |
 
@@ -20,8 +20,26 @@ Every tool that takes a `store` accepts a store id, or a name, suburb or postcod
 
 Requires Node 22 or newer.
 
+### Agentic install
+
+You can ask a coding agent such as Codex or Claude Code to install it. Give it this prompt:
+
+```
+install this: https://github.com/pwmcintyre/bunnings-mcp
+```
+
+An agent follows these steps:
+
+1. Clone the repo to a location the user chooses.
+2. Run `npm install` in the clone.
+3. Ask the user for their nearest Bunnings store or stores, rather than guessing. Find ids with `npm run find:store -- <suburb or postcode>` (or the `find_stores` tool once installed).
+4. Register the stdio server in the user's harness with the snippets below. The command is `npm start --silent --prefix <path to clone>` and the environment variable is `BUNNINGS_STORE_ID`, one id or an ordered comma-separated list.
+5. Restart the harness and call `get_store` to confirm.
+
+### Manual install
+
 ```sh
-git clone <this repo> bunnings-mcp
+git clone https://github.com/pwmcintyre/bunnings-mcp bunnings-mcp
 cd bunnings-mcp
 npm install
 ```
@@ -30,6 +48,17 @@ npm install
 
 ```sh
 claude mcp add bunnings --env BUNNINGS_STORE_ID=6400 -- npm start --silent --prefix /absolute/path/to/bunnings-mcp
+```
+
+### Codex
+
+Add to `~/.codex/config.toml`:
+
+```toml
+[mcp_servers.bunnings]
+command = "npm"
+args = ["start", "--silent", "--prefix", "/absolute/path/to/bunnings-mcp"]
+env = { BUNNINGS_STORE_ID = "6400" }
 ```
 
 ### OpenCode

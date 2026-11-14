@@ -21,9 +21,9 @@ export function buildServer(bunnings: Bunnings, session: Session): McpServer {
   const server = new McpServer({ name: "bunnings-mcp", version: "0.1.0" });
 
   server.registerTool("search_products", {
-    description: "Search bunnings.com.au for products at a store. Returns item number, name, price, unit price, url and rating. Stock is not in search data: set in_stock_only to check each candidate's product page (slower, up to 15 requests).",
-    inputSchema: { query: z.string().describe("Use the shop's catalogue words when results look wrong, for example \"nylon lock nut\" or \"TEKS screws\". Web search can find an item number for get_product."), store, in_stock_only: z.boolean().optional(), limit: z.number().int().min(1).max(36).optional() },
-  }, guard((a) => bunnings.search(a.query, { store: a.store, inStockOnly: a.in_stock_only, limit: a.limit })));
+    description: "Search bunnings.com.au for products at a store. Returns `returned`, `total`, `hasMore` and compact rows (item number, name, price, unit price, url, brand). One results page (up to 36 rows) is one request whatever `limit` is, so leave `limit` out and do not lower it to save requests. When `total` far exceeds `returned`, use `page` or refine the query (for example add a size) before concluding an item is not available. Stock is not in search data: set in_stock_only to check each candidate's product page (slower, up to 15 requests).",
+    inputSchema: { query: z.string().describe("Use the shop's catalogue words when results look wrong, for example \"nylon lock nut\" or \"TEKS screws\". Web search can find an item number for get_product."), store, in_stock_only: z.boolean().optional(), limit: z.number().int().min(1).max(36).optional().describe("Rows to return from the page. Defaults to the full page."), page: z.number().int().min(1).optional().describe("Results page, 36 rows each. Defaults to 1.") },
+  }, guard((a) => bunnings.search(a.query, { store: a.store, inStockOnly: a.in_stock_only, limit: a.limit, page: a.page })));
 
   server.registerTool("get_product", {
     description: "Product details from a bunnings.com.au URL or item number: price, specs, stock, aisle/bay, click and collect and delivery flags.",
@@ -31,10 +31,10 @@ export function buildServer(bunnings: Bunnings, session: Session): McpServer {
   }, guard((a) => bunnings.getProduct(a.url_or_item_number, { store: a.store })));
 
   server.registerTool("check_stock", {
-    description: "Stock and aisle/bay for a list of item numbers, sorted by aisle of the default store. Missing data is reported as \"unknown\". With an explicit store, checks that one store. With no store and several preferred stores (a BUNNINGS_STORE_ID list), each item gets a `stores` array in priority order (status, quantity, aisle, bay) and `firstInStock`; this costs one page fetch per item per preferred store, about 1 second each, so keep the list short. Otherwise set nearby_stores (0-5) to also check the closest other stores for items not in stock.",
-    inputSchema: { item_numbers: z.array(z.string()).min(1).max(30), store, nearby_stores: z.number().int().min(0).max(5).optional() },
+    description: "Stock and aisle/bay for a list of item numbers, sorted by aisle. Leave out `store` to check the user's preferred stores (a BUNNINGS_STORE_ID list): each item gets a `stores` array in priority order (status, quantity, aisle, bay) and `firstInStock`, at one page fetch per item per preferred store, about 1 second each. Pass `store` only when the user names a specific store. Missing data is reported as \"unknown\". Statuses apply only to the items checked, not to the range as a whole.",
+    inputSchema: { item_numbers: z.array(z.string()).min(1).max(30), store },
   }, guard(async (a) => {
-    const r = await bunnings.checkStock(a.item_numbers, { store: a.store, nearby: a.nearby_stores });
+    const r = await bunnings.checkStock(a.item_numbers, { store: a.store });
     return {
       store: r.store, storeId: r.storeId,
       items: r.rows.map((x) => ({ ...x, aisle: x.aisle ?? "unknown", bay: x.bay ?? "unknown", status: x.stock.status, quantity: x.stock.quantity ?? "unknown", stock: undefined })),

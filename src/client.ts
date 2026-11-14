@@ -3,7 +3,7 @@
 import { TtlCache } from "./cache.ts";
 import { ORIGIN, extractNextData, parseProduct, parseSearch, type Product, type Search, type Store, type Stock } from "./parse.ts";
 import type { Session } from "./session.ts";
-import { findStores, nearestStores, type FindOptions, type StoreMatch } from "./stores.ts";
+import { findStores, type FindOptions, type StoreMatch } from "./stores.ts";
 
 const UA = "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/130.0 Safari/537.36";
 
@@ -55,7 +55,6 @@ export interface StockRow {
   stores?: { store: string; storeId: string; status: Stock["status"]; quantity: number | null; aisle: string | null; bay: string | null; note?: string }[];
   /** First preferred store that has stock, when fanning out. */
   firstInStock?: { store: string; storeId: string } | null;
-  elsewhere?: { store: string; storeId: string; distanceKm?: number; status: Stock["status"]; quantity: number | null; aisle: string | null; bay: string | null }[];
 }
 
 const aisleOf = (s: Stock) => ({ aisle: s.locations[0]?.aisle ?? null, bay: s.locations[0]?.bay ?? null });
@@ -114,24 +113,28 @@ export class Bunnings {
 
   async search(query: string, opts: { store?: string; limit?: number; page?: number; inStockOnly?: boolean } = {}) {
     const store = opts.store ? this.stores.resolve(opts.store) : this.o.session.get();
-    const limit = Math.min(Math.max(opts.limit ?? 10, 1), 36);
+    const limit = Math.min(Math.max(opts.limit ?? 36, 1), 36);
     const params = new URLSearchParams({ q: query });
     if (opts.page && opts.page > 1) params.set("page", String(opts.page));
     const { nd } = await this.page(`/search/products?${params}`, store);
     const s: Search = parseSearch(nd);
     if (s.storeId !== store.id) throw new Error(`Search ran for store ${s.storeId}, not ${store.id}: the store cookie was not honoured. Check regionCode ${store.region}.`);
-    if (!opts.inStockOnly) return { ...s, store: store.name, results: s.results.slice(0, limit) };
+    // Compact rows for picking; hasMore means more matches exist beyond the rows returned (on this or later pages).
+    const { results: all, ...head } = s;
+    const row = ({ rating, ratingCount, ...r }: Search["results"][number]) => r;
+    const done = <R extends ReturnType<typeof row>>(results: R[], extra = {}) => ({ ...head, store: store.name, returned: results.length, hasMore: (s.page - 1) * 36 + all.length < s.total, results, ...extra });
+    if (!opts.inStockOnly) return done(all.slice(0, limit).map(row));
     // Search data carries no stock, so filtering costs one product page per candidate (cached, throttled).
     const SCAN_CAP = 15;
-    const kept: (Search["results"][number] & { stock: Stock })[] = [];
+    const kept: (ReturnType<typeof row> & { stock: Stock })[] = [];
     let scanned = 0;
-    for (const r of s.results.slice(0, SCAN_CAP)) {
+    for (const r of all.slice(0, SCAN_CAP)) {
       if (kept.length >= limit) break;
       scanned++;
       const p = await this.getProduct(r.itemNumber, { store: store.id });
-      if (p.stock.status === "in_stock") kept.push({ ...r, stock: p.stock });
+      if (p.stock.status === "in_stock") kept.push({ ...row(r), stock: p.stock });
     }
-    return { ...s, store: store.name, results: kept, scanned, scanCap: SCAN_CAP };
+    return done(kept, { scanned, scanCap: SCAN_CAP });
   }
 
   async getProduct(input: string, opts: { store?: string } = {}): Promise<Product> {
@@ -144,10 +147,9 @@ export class Bunnings {
     return { ...p, url };
   }
 
-  async checkStock(items: string[], opts: { store?: string; nearby?: number } = {}): Promise<{ store: string; storeId: string; rows: StockRow[] }> {
+  async checkStock(items: string[], opts: { store?: string } = {}): Promise<{ store: string; storeId: string; rows: StockRow[] }> {
     const store = opts.store ? this.stores.resolve(opts.store) : this.o.session.get();
     const fan = !opts.store && this.o.session.list().length > 1 ? this.o.session.list() : null;
-    const nearby = fan ? 0 : Math.min(opts.nearby ?? 0, 5); // nearby_stores is ignored when fanning out
     const rows: StockRow[] = [];
     for (const item of items) {
       let p: Product;
@@ -162,14 +164,6 @@ export class Bunnings {
         throw e;
       }
       const row: StockRow = { itemNumber: p.itemNumber, name: p.name, price: p.price, stock: p.stock, ...aisleOf(p.stock) };
-      if (p.stock.status !== "in_stock" && nearby > 0) {
-        row.elsewhere = [];
-        for (const n of nearestStores(this.o.stores, store, nearby)) {
-          const q = await this.getProduct(p.itemNumber, { store: n.id });
-          row.elsewhere.push({ store: n.name, storeId: n.id, distanceKm: n.distanceKm, status: q.stock.status, quantity: q.stock.quantity, ...aisleOf(q.stock) });
-          if (q.stock.status === "in_stock") break;
-        }
-      }
       if (fan) {
         row.stores = [];
         for (const n of fan) {
