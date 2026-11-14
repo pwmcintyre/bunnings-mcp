@@ -50,7 +50,7 @@ Add to `opencode.json`:
 
 ## Choosing your store
 
-Price, stock and aisle all depend on the store. Set `BUNNINGS_STORE_ID` to your store's id, or to an ordered, comma-separated list such as `6400,6222,6111` (the first is the default; an unknown id stops the server at startup), or leave it unset to use the website's own default store (Mentone, 6400). Find your id by asking the assistant to run `find_stores` with your suburb or postcode, or run it from the shell:
+Price, stock and aisle all depend on the store. Set `BUNNINGS_STORE_ID` to your store's id, or to an ordered, comma-separated list such as `6400,6404,6174` (the first is the default; an unknown id stops the server at startup), or leave it unset to use the website's own default store (Mentone, 6400). Find your id by asking the assistant to run `find_stores` with your suburb or postcode, or run it from the shell:
 
 ```sh
 npm run find:store -- mentone
