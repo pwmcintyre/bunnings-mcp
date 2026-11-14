@@ -51,6 +51,10 @@ export interface StockRow {
   aisle: string | null;
   bay: string | null;
   note?: string;
+  /** Every preferred store in priority order. Present only when check_stock fans out. */
+  stores?: { store: string; storeId: string; status: Stock["status"]; quantity: number | null; aisle: string | null; bay: string | null; note?: string }[];
+  /** First preferred store that has stock, when fanning out. */
+  firstInStock?: { store: string; storeId: string } | null;
   elsewhere?: { store: string; storeId: string; distanceKm?: number; status: Stock["status"]; quantity: number | null; aisle: string | null; bay: string | null }[];
 }
 
@@ -142,7 +146,8 @@ export class Bunnings {
 
   async checkStock(items: string[], opts: { store?: string; nearby?: number } = {}): Promise<{ store: string; storeId: string; rows: StockRow[] }> {
     const store = opts.store ? this.stores.resolve(opts.store) : this.o.session.get();
-    const nearby = Math.min(opts.nearby ?? 0, 5);
+    const fan = !opts.store && this.o.session.list().length > 1 ? this.o.session.list() : null;
+    const nearby = fan ? 0 : Math.min(opts.nearby ?? 0, 5); // nearby_stores is ignored when fanning out
     const rows: StockRow[] = [];
     for (const item of items) {
       let p: Product;
@@ -164,6 +169,23 @@ export class Bunnings {
           row.elsewhere.push({ store: n.name, storeId: n.id, distanceKm: n.distanceKm, status: q.stock.status, quantity: q.stock.quantity, ...aisleOf(q.stock) });
           if (q.stock.status === "in_stock") break;
         }
+      }
+      if (fan) {
+        row.stores = [];
+        for (const n of fan) {
+          let st: Stock = p.stock, note: string | undefined;
+          if (n.id !== store.id) {
+            try { st = (await this.getProduct(p.itemNumber, { store: n.id })).stock; }
+            catch (e) {
+              if (!(e instanceof HttpError) || e instanceof BlockedError) throw e;
+              st = { storeId: n.id, storeName: n.name, status: "unknown", quantity: null, stockText: null, locations: [] };
+              note = `not found (${e.message})`;
+            }
+          }
+          row.stores.push({ store: n.name, storeId: n.id, status: st.status, quantity: st.quantity, ...aisleOf(st), ...(note && { note }) });
+        }
+        const hit = row.stores.find((x) => x.status === "in_stock");
+        row.firstInStock = hit ? { store: hit.store, storeId: hit.storeId } : null;
       }
       rows.push(row);
     }

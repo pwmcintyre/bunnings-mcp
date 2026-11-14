@@ -10,7 +10,7 @@ This project is not affiliated with, endorsed by or connected to Bunnings Group 
 |---|---|
 | `search_products` | Site search at a store. Returns item number, name, price, unit price, URL and rating. `in_stock_only` filters by stock using each candidate's product page (up to 15 extra requests). |
 | `get_product` | Details from a product URL or item number: price, specs, stock quantity, aisle and bay, click and collect and delivery flags. |
-| `check_stock` | Stock and aisle/bay for a list of item numbers at one store, sorted by aisle. Missing data is reported as `unknown`. `nearby_stores` (0 to 5) also checks the closest other stores for items that are not in stock. |
+| `check_stock` | Stock and aisle/bay for a list of item numbers, sorted by aisle of the default store. With several preferred stores and no `store` argument, every preferred store is reported per item. Missing data is reported as `unknown`. `nearby_stores` (0 to 5) also checks the closest other stores for items that are not in stock. |
 | `find_stores` | Finds stores by name, suburb, postcode or state, nearest first when `lat` and `lon` are given. Backed by `data/stores.json` (every Australian store). |
 | `set_store` / `get_store` | Sets and reads the default store for the life of the server process. |
 
@@ -50,13 +50,15 @@ Add to `opencode.json`:
 
 ## Choosing your store
 
-Price, stock and aisle all depend on the store. Set `BUNNINGS_STORE_ID` to your store's id, or leave it unset to use the website's own default store (Mentone, 6400). Find your id by asking the assistant to run `find_stores` with your suburb or postcode, or run it from the shell:
+Price, stock and aisle all depend on the store. Set `BUNNINGS_STORE_ID` to your store's id, or to an ordered, comma-separated list such as `6400,6222,6111` (the first is the default; an unknown id stops the server at startup), or leave it unset to use the website's own default store (Mentone, 6400). Find your id by asking the assistant to run `find_stores` with your suburb or postcode, or run it from the shell:
 
 ```sh
 npm run find:store -- mentone
 ```
 
-The default can be changed during a session with `set_store`. It is held in memory and resets when the server restarts.
+The default can be changed during a session with `set_store`. It is held in memory and resets when the server restarts. `set_store` leaves the preferred list unchanged, and `get_store` returns both.
+
+With several preferred stores, `check_stock` without a `store` argument reports every preferred store per item, in priority order, plus the first one with stock. Each store is one more sequential page fetch per item, so three stores make three times the requests. `get_product` and `search_products` use the default store only.
 
 ## Development
 

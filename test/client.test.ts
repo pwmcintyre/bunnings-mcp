@@ -122,3 +122,27 @@ test("check_stock nearby fallback stops at the first store with stock", async ()
   assert.ok(e[0].distanceKm! <= e[1].distanceKm!, "nearest first");
   assert.equal(calls.length, 3, "stopped before the third neighbour");
 });
+
+test("check_stock fans out over preferred stores in order, with not_sold and unknown", async () => {
+  const calls: Call[] = [];
+  const client = new Bunnings({
+    stores: STORES, session: new Session(STORES, "6222,6111,6400"), delayMs: 0,
+    fetch: stubFetch((u, s) => {
+      const nd = productFor(s, s === "6400" ? { stock: 7, aisle: "12", bay: "3" } : { stock: 0 }, "8032174");
+      const f = nd.props.pageProps.dehydratedState.queries.find((q: any) => q.queryKey[0] === "product-fulfilment");
+      if (s === "6222") f.state.data.inStorePickUpData = { inStorePickUpAvailable: false, inStoreStockMsg: "notSoldAtThisStore" };
+      if (s === "6111") f.state.data = undefined;
+      return nd;
+    }, calls),
+  });
+  const r = await client.checkStock(["8032174"]);
+  const row = r.rows[0];
+  assert.equal(r.storeId, "6222");
+  assert.deepEqual(row.stores!.map((x) => [x.storeId, x.status]), [["6222", "not_sold"], ["6111", "unknown"], ["6400", "in_stock"]]);
+  assert.equal(row.stores![2].aisle, "12");
+  assert.deepEqual(row.firstInStock, { store: "Mentone", storeId: "6400" });
+  assert.deepEqual(calls.map((c) => /storeId=(\d+)/.exec(c.cookie)![1]), ["6222", "6111", "6400"], "one sequential fetch per store");
+
+  const one = await client.checkStock(["8032174"], { store: "6400" });
+  assert.equal(one.rows[0].stores, undefined, "an explicit store stays single-store");
+});

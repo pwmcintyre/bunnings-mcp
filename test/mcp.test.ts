@@ -48,7 +48,9 @@ test("find_stores", async () => {
 });
 
 test("set_store and get_store", async () => {
-  assert.equal((await call("get_store")).data.id, "6400");
+  const g = (await call("get_store")).data;
+  assert.equal(g.id, "6400");
+  assert.deepEqual(g.preferred.map((x: any) => x.id), ["6400"]);
   assert.equal((await call("set_store", { store: "Dandenong" })).data.id, "6111");
   assert.equal((await call("get_store")).data.id, "6111");
   const bad = await call("set_store", { store: "Atlantis" });

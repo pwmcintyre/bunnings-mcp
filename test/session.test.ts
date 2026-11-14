@@ -22,3 +22,20 @@ test("unknown or ambiguous stores fail with a useful message", () => {
   assert.equal(s.get().id, "6400", "failed set leaves the store unchanged");
   assert.throws(() => new Session(STORES, "9999"), /No store matches/);
 });
+
+test("BUNNINGS_STORE_ID takes an ordered list; the first is the default", () => {
+  const ids = (x: string) => new Session(STORES, x).list().map((s) => s.id);
+  assert.deepEqual(ids("6111"), ["6111"]);
+  assert.deepEqual(ids("6111,6222,6400"), ["6111", "6222", "6400"]);
+  assert.deepEqual(ids(" 6222 , ,6400,"), ["6222", "6400"]);
+  assert.equal(new Session(STORES, "6222,6400").get().id, "6222");
+  assert.deepEqual(ids(""), [SITE_DEFAULT_STORE_ID]);
+  assert.throws(() => new Session(STORES, "6400,9999"), /No store matches id "9999"/);
+});
+
+test("set_store changes the default but not the preferred list", () => {
+  const s = new Session(STORES, "6222,6400");
+  s.set("Dandenong");
+  assert.equal(s.get().id, "6111");
+  assert.deepEqual(s.list().map((x) => x.id), ["6222", "6400"]);
+});

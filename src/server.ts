@@ -31,7 +31,7 @@ export function buildServer(bunnings: Bunnings, session: Session): McpServer {
   }, guard((a) => bunnings.getProduct(a.url_or_item_number, { store: a.store })));
 
   server.registerTool("check_stock", {
-    description: "Stock and aisle/bay for a list of item numbers at one store, sorted by aisle. Missing data is reported as \"unknown\". Set nearby_stores (0-5) to also check the closest other stores for items not in stock.",
+    description: "Stock and aisle/bay for a list of item numbers, sorted by aisle of the default store. Missing data is reported as \"unknown\". With an explicit store, checks that one store. With no store and several preferred stores (a BUNNINGS_STORE_ID list), each item gets a `stores` array in priority order (status, quantity, aisle, bay) and `firstInStock`; this costs one page fetch per item per preferred store, about 1 second each, so keep the list short. Otherwise set nearby_stores (0-5) to also check the closest other stores for items not in stock.",
     inputSchema: { item_numbers: z.array(z.string()).min(1).max(30), store, nearby_stores: z.number().int().min(0).max(5).optional() },
   }, guard(async (a) => {
     const r = await bunnings.checkStock(a.item_numbers, { store: a.store, nearby: a.nearby_stores });
@@ -47,14 +47,14 @@ export function buildServer(bunnings: Bunnings, session: Session): McpServer {
   }, guard((a) => bunnings.stores.find(a).map((s) => ({ ...storeSummary(s), postcode: s.postcode, state: s.state, phone: s.phone, distanceKm: s.distanceKm, hours: s.hours }))));
 
   server.registerTool("set_store", {
-    description: "Set the default store for this session (kept in memory until the server restarts). Accepts a store id, or a name, suburb or postcode that matches one store.",
+    description: "Set the default store for this session (kept in memory until the server restarts). The preferred list is unchanged. Accepts a store id, or a name, suburb or postcode that matches one store.",
     inputSchema: { store: z.string() },
   }, guard((a) => storeSummary(session.set(a.store))));
 
   server.registerTool("get_store", {
-    description: "The current default store for this session.",
+    description: "The current default store for this session, plus the ordered preferred stores (from BUNNINGS_STORE_ID) that check_stock reports on.",
     inputSchema: {},
-  }, guard(() => storeSummary(session.get())));
+  }, guard(() => ({ ...storeSummary(session.get()), preferred: session.list().map(storeSummary) })));
 
   return server;
 }
