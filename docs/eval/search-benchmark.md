@@ -45,7 +45,7 @@ For the same item and store, `product-fulfilment` and `product-aisle-item-locati
 |---|---|---|---|
 | 0125995 | Mentone | Aisle 12, Bay 17 | Aisle 12, Bay 9 |
 | 0125995 | Armadale WA | Aisle 11, Bay 7 | Aisle 11, Bay 12 |
-| 0125995 | Thomastown | Aisle 11, Bay 17 | Aisle 11, Bay 14 |
+| 0125995 | a VIC metro store | Aisle 11, Bay 17 | Aisle 11, Bay 14 |
 | 8032174 | Mentone | Aisle 403, Bay 3 | Aisle 403, Bay 3 |
 
 ## Limitations
