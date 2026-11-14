@@ -19,7 +19,10 @@ for (const [i, url] of urls.entries()) {
     const res = await get(url);
     if (res.status === 403 || res.status === 503) throw new Error(`HTTP ${res.status}: bot protection? stopping`);
     if (!res.ok) { console.error(`skip ${url}: HTTP ${res.status}`); continue; }
-    stores.push(parseStorePage(extractNextData(await res.text()), url));
+    const store = parseStorePage(extractNextData(await res.text()), url);
+    // A store with no coordinates is a placeholder page (closed or not yet open); it cannot be matched by distance.
+    if (!store.lat || !store.lon) { console.error(`skip ${url}: no coordinates`); continue; }
+    stores.push(store);
   } catch (e) {
     if (String(e).includes("stopping")) throw e;
     console.error(`skip ${url}: ${e}`);

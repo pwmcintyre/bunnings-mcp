@@ -3450,29 +3450,6 @@
   }
  },
  {
-  "id": "8087",
-  "name": "Rocklea",
-  "address": "Corner Balham & Granard Roads",
-  "suburb": "Rocklea",
-  "state": "QLD",
-  "postcode": "4106",
-  "lat": 0,
-  "lon": 0,
-  "phone": "07 3722 1000",
-  "region": "QLDMetro",
-  "url": "https://www.bunnings.com.au/stores/qld/rocklea",
-  "mapUrl": "http://map-viewer.apps.bunnings.com.au/api/8087/map-8087.pdf",
-  "hours": {
-   "monday": "closed",
-   "tuesday": "closed",
-   "wednesday": "closed",
-   "thursday": "closed",
-   "friday": "closed",
-   "saturday": "closed",
-   "sunday": "closed"
-  }
- },
- {
   "id": "8076",
   "name": "Rothwell",
   "address": "Corner Anzac Avenue & Bremner Road",
