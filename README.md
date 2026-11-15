@@ -4,6 +4,33 @@ An unofficial, read-only [MCP][1] server for the Australian Bunnings Warehouse w
 
 This project is not affiliated with, endorsed by or connected to Bunnings Group Limited. It reads the public pages of the website anonymously, the same pages a browser sees. It does not log in, add to a trolley or place orders. The website can change at any time and break it. Prices and stock are whatever the website shows and can be out of date by the time you drive to the store.
 
+## Motivation
+
+Agents are great at CAD and physical design. Sourcing local parts remains the weak link.
+
+Web searches restricted to bunnings.com.au return generic catalogue matches which are not always locally stocked.
+
+This MCP lets agents check product details, prices and stock at nearby Bunnings stores, compare alternatives and include aisle locations.
+
+Your agent can now design something you can build with local parts.
+
+I recommend using this in tandem with your personalized AGENTS.md to describe your shopping preferences.
+
+NOTE: this is a stop-gap until Bunnings exposes an MCP.
+
+### Basic Example: "I need M10 galvanised bolts, 60–100 mm"
+
+Codex with GPT-6 Luna:
+
+> Bunnings Mentone has M10 hot-dip galvanised bolts with nuts in your size range:
+> 
+> - 60 mm hex head — $1.42 each; 72 in stock, aisle 12, bay 13.
+> - 75 mm hex head — $1.46 each; 76 in stock, aisle 12, bay 13.
+> - 90 mm cup head — $1.44 each; 82 in stock, aisle 12, bay 9.
+> - 100 mm hex head — $2.05 each; 63 in stock, aisle 12, bay 11.
+> 
+> Stock and prices checked for Mentone (6400); they can change.
+
 ## Tools
 
 | tool | what it does |
